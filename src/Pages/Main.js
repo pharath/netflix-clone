@@ -1,10 +1,11 @@
 import React from 'react'
-import './Lk.css'
+import './Main.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
+import Globalfooter from '../Components/Globalfooter';
 
-export default function Lk() {
+export default function main() {
   return (
     <div>
       <div className="home-main-container">
@@ -19,7 +20,7 @@ export default function Lk() {
             <Form className='email-input-container'>
               <Form.Control className='email-input py-3' type="email" placeholder="Email Address" />
             </Form>
-            <Button className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
+            <Button href='/signup' className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div>     
       </div>
       <div className="home-main-shadow"></div>
@@ -113,13 +114,10 @@ export default function Lk() {
             <Form className='email-input-container'>
               <Form.Control className='email-input py-3' type="email" placeholder="Email Address" />
             </Form>
-            <Button className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
+            <Button href='/signup' className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div> 
       </div> 
-      <div className="home-footer text-light">
-        <h6>© 2024 NetflixClone. All rights reserved.&nbsp;By Group 20 - COSC 31093</h6> 
-        <h7>This is a demo project and is not affiliated with or endorsed by Netflix. All content, logos, and trademarks are property of their respective owners.</h7>
-      </div> 
+      <Globalfooter/>
     </div>
   )
 }

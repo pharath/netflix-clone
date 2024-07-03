@@ -1,0 +1,42 @@
+.inner-container{
+    width: 27%;
+    height: 80%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: left;
+}
+h6{
+    font-weight: 400;
+    font-size: 120%;
+}
+.userEmail{
+    font-weight: 600;
+}
+.password-input{
+    width: 225%;
+    border-radius: 0px;
+    padding: 9% 9%;
+}
+.password-input:focus{
+    box-shadow: none;
+}
+.btn-4{
+    font-size: 120%;
+    width: 100%;
+    height: 12%;
+    display: flex;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 3px;
+}
+.btn-4:hover{
+    background-color: rgb(204, 0, 0);
+}
+.bold{
+    font-weight: 600;
+}

@@ -1,12 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-import Lk from './Pages/Lk';
+import Main from './Pages/Main';
+import Signup from './Pages/Signup';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 
 
 function App() {
   return (
     <div className="App">
-      <Lk/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Main/>}></Route>
+          <Route path='/signup' element={<Signup/>}></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

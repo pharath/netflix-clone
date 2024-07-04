@@ -36,3 +36,8 @@ a{
     text-decoration: none;
     color: black;
 }
+.feature-text{
+    width: 90%;
+    margin-top: -11%;
+    margin-left: 11%;
+}

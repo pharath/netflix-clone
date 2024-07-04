@@ -3,6 +3,7 @@ import './App.css';
 import Main from './Pages/Main';
 import Signup from './Pages/Signup';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Planform from './Pages/Planform';
 
 
 
@@ -13,8 +14,9 @@ function App() {
         <Routes>
           <Route path='/' element={<Main/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/signup/planform' element={<Planform/>}></Route>
         </Routes>
-      </BrowserRouter>
+</BrowserRouter>
     </div>
   );
 }

@@ -13,10 +13,13 @@ export default function Signup_step2() {
       <h2>Choose your plan.</h2>
       <div className="feature-container">
         <span className='feature-tick'><i class="bi bi-check-lg"></i></span><span className='features'> No commitments, cancel anytime.</span><br></br>
-        <span className='feature-tick'><i class="bi bi-check-lg"></i></span><span className='features'> Everything on Netflix for one low price.</span><br></br>
+        <span className='feature-tick'><i class="bi bi-check-lg"></i></span>
+          <div className="feature-text">
+            <span className='features'> Everything on Netflix for one low price.</span><br></br>
+          </div> 
         <span className='feature-tick'><i class="bi bi-check-lg"></i></span><span className='features'> No ads and no extra fees. Ever.</span>
       </div>
-      <Button className='btn-4'>Next</Button>
+      <Button href='/signup/planform' className='btn-4'>Next</Button>
     </div>
   )
 }

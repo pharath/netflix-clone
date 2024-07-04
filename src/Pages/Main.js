@@ -10,7 +10,7 @@ export default function main() {
     <div>
       <div className="home-main-container">
           <div className="hero-masterhead">
-            <img className='brand-logo' src='Netflix-brand.png'></img>
+            <img className='brand-logo' src='/Assets/Netflix-brand.png'></img>
             <Button className='text-light fw-bold btn-2' variant="danger">Sign In</Button>
           </div>
           <h1>Unlimited movies, TV shows, and more</h1>
@@ -30,10 +30,10 @@ export default function main() {
             <h1 className='section-heading'>Enjoy on your TV</h1>
             <h2 className='section-text'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</h2>
         </div>
-        <img className='section-img' src='tv.png'></img>
+        <img className='section-img' src='/Assets/tv.png'></img>
         <div className="video-1">
         <video 
-          src="video-tv.m4v" 
+          src="/Assets/video-tv.m4v" 
           loop 
           autoPlay 
           muted 
@@ -42,7 +42,7 @@ export default function main() {
         </div>
       </div> 
       <div className="home-section2">
-        <img className='section-img' src='mobile-1.png'></img>
+        <img className='section-img' src='/Assets/mobile-1.png'></img>
         <div className="section-content">
             <h1 className='section-heading'>Download your shows to watch offline</h1>
             <h2 className='section-text'>Save your favorites easily and always have something to watch.</h2>
@@ -55,7 +55,7 @@ export default function main() {
         </div>
       </div>
       <div className="home-section4">
-        <img className='section-img' src='kids.png'></img>
+        <img className='section-img' src='/Assets/kids.png'></img>
         <div className="section-content">
             <h1 className='section-heading'>Create profiles for kids</h1>
             <h2 className='section-text'>Send kids on adventures with their favorite characters in a space made just for them—free with your membership.</h2>
@@ -66,7 +66,7 @@ export default function main() {
         <br></br>
         <Accordion className='faq'>
           <Accordion.Item className='faq-item' eventKey="0">
-          <Accordion.Header className='faq-head'>What is Netflix?<img className='plus' src='./plus.png'></img></Accordion.Header>
+          <Accordion.Header className='faq-head'>What is Netflix?<img className='plus' src='./Assets/plus.png'></img></Accordion.Header>
           <Accordion.Body className='faq-body'>
             Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.
             <br></br><br></br>
@@ -74,13 +74,13 @@ export default function main() {
           </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item className='faq-item' eventKey="1">
-          <Accordion.Header>How much does Netflix cost?<img className='plus' src='./plus.png'></img></Accordion.Header>
+          <Accordion.Header>How much does Netflix cost?<img className='plus' src='./Assets/plus.png'></img></Accordion.Header>
           <Accordion.Body className='faq-body'>
             Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from USD 2.99 to USD 9.99 a month. No extra costs, no contracts.
           </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item className='faq-item' eventKey="2">
-          <Accordion.Header>Where can I watch?<img className='plus' src='./plus.png'></img></Accordion.Header>
+          <Accordion.Header>Where can I watch?<img className='plus' src='./Assets/plus.png'></img></Accordion.Header>
           <Accordion.Body className='faq-body'>
             Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles.
             <br></br><br></br>
@@ -88,19 +88,19 @@ export default function main() {
           </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item className='faq-item' eventKey="3">
-          <Accordion.Header>How do I cancel?<img className='plus' src='./plus.png'></img></Accordion.Header>
+          <Accordion.Header>How do I cancel?<img className='plus' src='./Assets/plus.png'></img></Accordion.Header>
           <Accordion.Body className='faq-body'>
             Netflix is flexible. There are no pesky contracts and no commitments. You can easily cancel your account online in two clicks. There are no cancellation fees - start or stop your account anytime.
           </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item className='faq-item' eventKey="4">
-          <Accordion.Header>What can I watch on Netflix?<img className='plus' src='./plus.png'></img></Accordion.Header>
+          <Accordion.Header>What can I watch on Netflix?<img className='plus' src='./Assets/plus.png'></img></Accordion.Header>
           <Accordion.Body className='faq-body'>
             Netflix has an extensive library of feature films, documentaries, TV shows, anime, award-winning Netflix originals, and more. Watch as much as you want, anytime you want.
           </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item className='faq-item' eventKey="5">
-          <Accordion.Header>Is Netflix good for kids?<img className='plus' src='./plus.png'></img></Accordion.Header>
+          <Accordion.Header>Is Netflix good for kids?<img className='plus' src='./Assets/plus.png'></img></Accordion.Header>
           <Accordion.Body className='faq-body'>
             The Netflix Kids experience is included in your membership to give parents control while kids enjoy family-friendly TV shows and movies in their own space.
             <br></br><br></br>

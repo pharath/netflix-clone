@@ -79,3 +79,7 @@
     margin-top: 3%;
     color: rgb(189, 189, 189);
 }
+.home-main-hero2{
+    background-image: url('./signIn.jpg');
+    background-size: cover;
+}

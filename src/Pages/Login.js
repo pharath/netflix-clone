@@ -44,8 +44,8 @@ export default function Login() {
                 {signInBtn && <Button variant="danger" className='btn-4 signin-btn2'>Sign In</Button>}             
                 {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2'>Send Sign-In Code</Button>}     
                 <p className='signin-text'>OR</p>
-                {signCodeBtn && <Button onClick={useCode} className='btn-4 signin-btn2 signin-btn-code'>Use a Sign-In Code</Button>}
-                {usePasswordBtn && <Button onClick={usePassword} className='btn-4 signin-btn2 signin-btn-code'>Use Password</Button>}
+                {signCodeBtn && <Button variant="light" onClick={useCode} className='text-light btn-4 signin-btn2 signin-btn-code'>Use a Sign-In Code</Button>}
+                {usePasswordBtn && <Button variant="light" onClick={usePassword} className='text-light btn-4 signin-btn2 signin-btn-code'>Use Password</Button>}
                 <div className="check-box signin-check-box">
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; Remember me
                 </div>
@@ -54,8 +54,8 @@ export default function Login() {
             </div>
           </div>     
         </div>
-        <div className="home-main-shadow"></div>
-        <div className="home-main-hero"></div> 
+        <div className="home-main-shadow home-main-shadow2"></div>
+        <div className="home-main-hero home-main-hero2"></div> 
         <Globalfooter/>
     </div>
   )

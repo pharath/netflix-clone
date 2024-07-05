@@ -4,8 +4,20 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 import Globalfooter from '../Components/Globalfooter';
+import { useNavigate } from 'react-router-dom';
 
-export default function main() {
+export default function Main() {
+  const navigate=useNavigate();
+
+  function getStarted(){
+    if(1==1){ //email is already registerd
+      navigate('/signup');
+    }
+    else{ //email is not registerd
+      navigate('/registration');
+    }
+  }
+
   return (
     <div>
       <div className="home-main-container">
@@ -20,7 +32,7 @@ export default function main() {
             <Form className='email-input-container'>
               <Form.Control className='email-input py-3' type="email" placeholder="Email Address" />
             </Form>
-            <Button href='/signup' className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
+            <Button onClick={getStarted} className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div>     
       </div>
       <div className="home-main-shadow"></div>

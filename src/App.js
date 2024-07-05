@@ -7,6 +7,8 @@ import Planform from './Pages/Planform';
 import PaymentPicker from './Pages/PaymentPicker';
 import Credit from './Pages/Credit';
 import Login from './Pages/Login';
+import ScrollTop from './Pages/ScrollTop';
+import Registration from './Pages/Registration';
 
 
 
@@ -14,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <ScrollTop/>
         <Routes>
           <Route path='/' element={<Main/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
@@ -21,8 +24,9 @@ function App() {
           <Route path='/signup/paymentPicker' element={<PaymentPicker/>}></Route>
           <Route path='/signup/creditoption' element={<Credit/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
+          <Route path='/registration' element={<Registration/>}></Route>
         </Routes>
-</BrowserRouter>
+      </BrowserRouter>
     </div>
   );
 }

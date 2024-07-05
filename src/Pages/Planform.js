@@ -5,13 +5,29 @@ import Globalfooter from '../Components/Globalfooter'
 import PlanCard from '../Components/PlanCard'
 import Button from 'react-bootstrap/Button';
 import PlanCard2 from '../Components/PlanCard2'
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Planform() {
+  const navigate = useNavigate();
 
   const [selectedCard, setSelectedCard] = useState('Premium');
 
   const handleSelect = (title1) => {
     setSelectedCard(title1);
+  };
+
+  const packageSelected = () => {
+    let packagePrice;
+    if(selectedCard=='Premium')
+      packagePrice=9.99;
+    else if(selectedCard=='Standerd')
+      packagePrice=7.99;
+    else if(selectedCard=='Basic')
+      packagePrice=3.99;
+    else if(selectedCard=='Mobile')
+      packagePrice=2.99;
+    navigate('/signup/paymentPicker', { state: {selectedCard,packagePrice} });
   };
 
   return (
@@ -33,7 +49,7 @@ export default function Planform() {
         <div className="body-container2-3">
           <p className='planform-info'>HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to your internet service and device capabilities. Not all content is available in all resolutions. <span className='terms-of-use-text'>See our Terms</span> of Use for more details.
           Only people who live with you may use your account. Watch on 4 different devices at the same time with Premium, 2 with Standard, and 1 with Basic and Mobile.</p>
-          <Button href='/signup/paymentPicker' className='btn-5'>Next</Button>
+          <Button onClick={packageSelected} className='btn-5'>Next</Button>
         </div>
         <Globalfooter/>
     </div>

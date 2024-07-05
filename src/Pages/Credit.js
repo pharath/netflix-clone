@@ -4,8 +4,12 @@ import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { useLocation } from 'react-router-dom';
 
 export default function Credit() {
+
+const location = useLocation();
+const {selectedCard,packagePrice} = location.state || {};  
 
 const [value, setValue] = useState('');
 const [placeholder, setPlaceholder] = useState('Expiration date');
@@ -79,21 +83,23 @@ const handleCvvChange = (e) => {
                 <Form>
                     <div className="input-sections">
                         <Form.Control className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19"/>
+                        <img className='input-icon' src='/Assets/input-cardno.png'></img>
                     </div>
                     <div className="input-sections2">
                         <Form.Control className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" />
                         <Form.Control className='credit-input' type="text" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"/>
+                        <img className='input-icon-cvv' src='/Assets/input-cvv.png'></img>
                     </div>
                     <div className="input-sections">
                         <Form.Control className='credit-input' type="text" placeholder="Name on card" />
                     </div>
                 </Form>
                 <div className="package-info">
-                    <p className='package-price'>USD <span>7.99</span>/month</p>
-                    <p className='package-name'>Standerd</p>
+                    <p className='package-price'>USD <span>{packagePrice}</span>/month</p>
+                    <p className='package-name'>{selectedCard}</p>
                     <a href='/signup/planform' className='package-change text-primary'>Change</a>
                 </div>
-                <p className='payment-terms'>By checking the checkbox below, you agree to our <span className='text-primary'>Terms of Use</span> , <span className='text-primary'>Privacy Statement</span>, and that you are over 18. Netflix will automatically continue your membership and charge the membership fee (currently USD 7.99/month) to your payment method until you cancel. You may cancel at any time to avoid future charges.</p>
+                <p className='payment-terms'>By checking the checkbox below, you agree to our <span className='text-primary'>Terms of Use</span> , <span className='text-primary'>Privacy Statement</span>, and that you are over 18. Netflix will automatically continue your membership and charge the membership fee (currently USD <span>{packagePrice}</span>/month) to your payment method until you cancel. You may cancel at any time to avoid future charges.</p>
                 <div className="check-box">
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; I agree.
                 </div>

@@ -2,8 +2,20 @@ import React from 'react'
 import './PaymentPicker.css'
 import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function PaymentPicker() {
+    
+    const navigate = useNavigate();
+
+    const location = useLocation();
+    const {selectedCard,packagePrice} = location.state || {};
+
+    const paymentPicked = () => {
+        navigate('/signup/creditoption', { state: {selectedCard,packagePrice} });
+    };
+
   return (
     <div>
         <a href='/' className="signout-btn">
@@ -20,7 +32,7 @@ export default function PaymentPicker() {
                 <p className='payment-text bold2'>Secure for peace of mind.<br></br>
                 Cancel easily online.</p><br></br>
                 <div className="secure-server-badge-text">End-to-end encrypted<img className='encrypt-badge' src='/Assets/encrypt.png'></img></div>
-                <a href='/signup/creditoption' className="payment-selector">
+                <a onClick={paymentPicked} className="payment-selector">
                     <p className='payment-selector-text'>Credit or Debit Card</p>
                     <img src='/Assets/visa.png'></img>
                     <img src='/Assets/master.png'></img>

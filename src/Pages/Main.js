@@ -11,7 +11,7 @@ export default function main() {
       <div className="home-main-container">
           <div className="hero-masterhead">
             <img className='brand-logo' src='/Assets/Netflix-brand.png'></img>
-            <Button className='text-light fw-bold btn-2' variant="danger">Sign In</Button>
+            <Button href='/login' className='text-light fw-bold btn-2' variant="danger">Sign In</Button>
           </div>
           <h1>Unlimited movies, TV shows, and more</h1>
           <h4>Watch anywhere. Cancel anytime.</h4>

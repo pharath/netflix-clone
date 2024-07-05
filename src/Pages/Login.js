@@ -6,24 +6,27 @@ import Globalfooter from '../Components/Globalfooter';
 
 export default function Login() {
     const[messageRateText,setMessageRateText]=useState(false);
-    const[signBtnText,setSignBtnText]=useState('Sign In');
+    const[signInBtn,setSignInBtn]=useState(true);
+    const[signInCodeBtn,setSignInCodeBtn]=useState(false);
     const[signCodeBtn,setSignCodeBtn]=useState(true);
     const[usePasswordBtn,setUsePassword]=useState(false);
     const[passwordInput,setPasswordInput]=useState(true);
 
     function usePassword(){
         setPasswordInput(true);
-        setSignBtnText('Sign In');
         setSignCodeBtn(true);
         setUsePassword(false);
         setMessageRateText(false);
+        setSignInBtn(true);
+        setSignInCodeBtn(false);
     }
     function useCode(){
         setPasswordInput(false);
-        setSignBtnText('Send Sign-In Code');
         setSignCodeBtn(false);
         setUsePassword(true);
         setMessageRateText(true);
+        setSignInBtn(false);
+        setSignInCodeBtn(true);
     }
 
   return (
@@ -37,8 +40,9 @@ export default function Login() {
                 <h2 className='signin-header'>Sign In</h2>
                 <Form.Control className='email-input-login py-3' type="email" placeholder="Email or mobile number" />
                 {messageRateText && <p className='message-rate'>Message and data rates may apply</p>}      
-                {passwordInput && <Form.Control className='email-input-login py-3' type="email" placeholder="Password" />}              
-                <Button variant="danger" className='btn-4 signin-btn2'>{signBtnText}</Button>
+                {passwordInput && <Form.Control className='email-input-login py-3' type="email" placeholder="Password" />} 
+                {signInBtn && <Button variant="danger" className='btn-4 signin-btn2'>Sign In</Button>}             
+                {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2'>Send Sign-In Code</Button>}     
                 <p className='signin-text'>OR</p>
                 {signCodeBtn && <Button onClick={useCode} className='btn-4 signin-btn2 signin-btn-code'>Use a Sign-In Code</Button>}
                 {usePasswordBtn && <Button onClick={usePassword} className='btn-4 signin-btn2 signin-btn-code'>Use Password</Button>}

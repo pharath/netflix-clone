@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import './Login.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Globalfooter from '../Components/Globalfooter';
+import GlobalFooter2 from '../Components/Globalfooter2';
+
+
 
 export default function Login() {
     const[messageRateText,setMessageRateText]=useState(false);
@@ -56,7 +58,7 @@ export default function Login() {
         </div>
         <div className="home-main-shadow home-main-shadow2"></div>
         <div className="home-main-hero home-main-hero2"></div> 
-        <Globalfooter/>
+        <GlobalFooter2/>
     </div>
   )
 }

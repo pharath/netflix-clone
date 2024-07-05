@@ -17,7 +17,7 @@ export default function Registration() {
                 <span>STEP <span className='bold'>1</span> OF <span className='bold'>3</span></span>
                 <h2>Finish setting up your account.</h2>
                 <h6>Netflix is personalized for you.<br></br> Create a password to watch on any device at any time.</h6><br></br>
-                <Button variant="danger" className='btn-4 register-next'>Next</Button>
+                <Button href='/signup/regform' variant="danger" className='btn-4 register-next'>Next</Button>
             </div>
         </div>
         <Globalfooter/>

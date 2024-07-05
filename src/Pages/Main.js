@@ -3,14 +3,14 @@ import './Main.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
-import Globalfooter from '../Components/Globalfooter';
 import { useNavigate } from 'react-router-dom';
+import GlobalFooter2 from '../Components/Globalfooter2';
 
 export default function Main() {
   const navigate=useNavigate();
 
   function getStarted(){
-    if(1==1){ //email is already registerd
+    if(1==2){ //email is already registerd
       navigate('/signup');
     }
     else{ //email is not registerd
@@ -129,7 +129,7 @@ export default function Main() {
             <Button href='/signup' className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div> 
       </div> 
-      <Globalfooter/>
+      <GlobalFooter2/>
     </div>
   )
 }

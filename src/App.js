@@ -9,6 +9,7 @@ import Credit from './Pages/Credit';
 import Login from './Pages/Login';
 import ScrollTop from './Pages/ScrollTop';
 import Registration from './Pages/Registration';
+import Regform from './Pages/Regform';
 
 
 
@@ -25,6 +26,7 @@ function App() {
           <Route path='/signup/creditoption' element={<Credit/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/registration' element={<Registration/>}></Route>
+          <Route path='/signup/regform' element={<Regform/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

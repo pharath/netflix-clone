@@ -104,7 +104,7 @@ const handleCvvChange = (e) => {
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; I agree.
                 </div>
                 <br></br>
-                <Button className='btn-4'>Start Membership</Button><br></br>
+                <Button variant="danger" className='btn-4'>Start Membership</Button><br></br>
                 <p className='payment-terms'>This page is protected by Google reCAPTCHA to ensure you're not a bot. <span className='text-primary'>Learn more</span> .</p>
                 <br></br><br></br><br></br>
             </div>

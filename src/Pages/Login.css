@@ -74,3 +74,8 @@
     text-align: left;
     font-size: 80%;
 }
+.message-rate{
+    font-size: 85%;
+    margin-top: 3%;
+    color: rgb(189, 189, 189);
+}

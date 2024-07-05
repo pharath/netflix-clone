@@ -19,7 +19,7 @@ export default function Signup_step2() {
           </div> 
         <span className='feature-tick'><i class="bi bi-check-lg"></i></span><span className='features'> No ads and no extra fees. Ever.</span>
       </div>
-      <Button href='/signup/planform' className='btn-4'>Next</Button>
+      <Button variant="danger" href='/signup/planform' className='btn-4'>Next</Button>
     </div>
   )
 }

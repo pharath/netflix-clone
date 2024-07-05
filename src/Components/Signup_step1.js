@@ -15,7 +15,7 @@ export default function Signup_step1({hideStep1,showStep2}) {
       <Form>
           <Form.Control className='password-input' type="password" placeholder="Enter your password" />
       </Form><br></br>
-      <Button variant="danger" onClick={() => { hideStep1(); showStep2(); }} className='btn-4'>Next</Button>
+      <Button variant="danger" href='/signup/plan' className='btn-4'>Next</Button>
     </div>
   )
 }

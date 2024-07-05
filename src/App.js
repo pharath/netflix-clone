@@ -10,6 +10,7 @@ import Login from './Pages/Login';
 import ScrollTop from './Pages/ScrollTop';
 import Registration from './Pages/Registration';
 import Regform from './Pages/Regform';
+import Planwelcome from './Pages/Planwelcome';
 
 
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/registration' element={<Registration/>}></Route>
           <Route path='/signup/regform' element={<Regform/>}></Route>
+          <Route path='/signup/plan' element={<Planwelcome/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

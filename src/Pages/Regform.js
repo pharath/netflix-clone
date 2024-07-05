@@ -28,7 +28,7 @@ export default function Regform() {
                 <div className="check-box-add-password">
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; Please do not email me Netflix special offers.
                 </div><br></br>
-                <Button href='/signup' variant="danger" className='btn-4 register-next'>Next</Button>
+                <Button href='/signup/plan' variant="danger" className='btn-4 register-next'>Next</Button>
             </div>
         </div>
         <Globalfooter/>

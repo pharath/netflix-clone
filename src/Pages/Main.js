@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Main.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -7,15 +7,30 @@ import { useNavigate } from 'react-router-dom';
 import GlobalFooter2 from '../Components/Globalfooter2';
 
 export default function Main() {
+
   const navigate=useNavigate();
 
-  function getStarted(){
-    if(1==2){ //email is already registerd
-      navigate('/signup');
-    }
-    else{ //email is not registerd
-      navigate('/registration');
-    }
+  function getStarted(){ //use GET method to check is email already registerd or not
+    const userInput=document.getElementById('userEmailInput').value;
+    fetch(`http://localhost:8080/api/login/${userInput}`)
+    .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      if (response.status === 204 || response.headers.get('content-length') === '0') {
+          navigate('/registration', { state: { email: userInput } });
+          return null; 
+      } else {
+          return response.json(); 
+      }
+    })
+    .then(data => {
+      if (data === null || data === undefined) {
+          navigate('/registration', { state: { email: userInput } });
+      } else {
+          navigate('/signup', { state: { email: data.email, password: data.password } });
+      }
+    });
   }
 
   return (
@@ -30,7 +45,7 @@ export default function Main() {
           <h4>Ready to watch? Enter your email to create or restart your membership.</h4>
           <div className="form-container">
             <Form className='email-input-container'>
-              <Form.Control className='email-input py-3' type="email" placeholder="Email Address" />
+              <Form.Control id="userEmailInput" className='email-input py-3' type="email" placeholder="Email Address" />
             </Form>
             <Button onClick={getStarted} className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div>     
@@ -124,9 +139,9 @@ export default function Main() {
         <h4 className='text-light'>Ready to watch? Enter your email to create or restart your membership.</h4>
           <div className="form-container2">
             <Form className='email-input-container'>
-              <Form.Control className='email-input py-3' type="email" placeholder="Email Address" />
+              <Form.Control id="userEmailInput2" className='email-input py-3' type="email" placeholder="Email Address" />
             </Form>
-            <Button href='/signup' className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
+            <Button className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div> 
       </div> 
       <GlobalFooter2/>

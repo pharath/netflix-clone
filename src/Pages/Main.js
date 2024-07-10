@@ -10,7 +10,7 @@ export default function Main() {
   const navigate=useNavigate();
 
   function getStarted(){
-    if(1==1){ //email is already registerd
+    if(1==2){ //email is already registerd
       navigate('/signup');
     }
     else{ //email is not registerd

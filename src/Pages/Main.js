@@ -10,27 +10,32 @@ export default function Main() {
 
   const navigate=useNavigate();
 
-  function getStarted(){ //use GET method to check is email already registerd or not
+  function getStarted(){ //use GET method to check, is email already registerd or not
     const userInput=document.getElementById('userEmailInput').value;
-    fetch(`http://localhost:8080/api/login/${userInput}`)
+    const userInput2=document.getElementById('userEmailInput2').value;
+    let Email='';
+    if(userInput){
+      Email=userInput;
+    }
+    if(userInput2){
+      Email=userInput2;
+    }
+    fetch(`http://localhost:8080/api/login/${Email}`)
     .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      if (response.status === 204 || response.headers.get('content-length') === '0') {
-          navigate('/registration', { state: { email: userInput } });
-          return null; 
-      } else {
-          return response.json(); 
-      }
+    if (response.status === 204 || response.headers.get('content-length') === '0') {
+      navigate('/registration', { state: { email: Email } });
+      return null; 
+    }
+    else{
+      return response.json(); 
+    }
     })
     .then(data => {
-      if (data === null || data === undefined) {
-          navigate('/registration', { state: { email: userInput } });
-      } else {
-          navigate('/signup', { state: { email: data.email, password: data.password } });
-      }
-    });
+    if (data) {
+      navigate('/signup', { state: { email: data.email, password: data.password } });
+    }
+    })
+
   }
 
   return (
@@ -141,7 +146,7 @@ export default function Main() {
             <Form className='email-input-container'>
               <Form.Control id="userEmailInput2" className='email-input py-3' type="email" placeholder="Email Address" />
             </Form>
-            <Button className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
+            <Button onClick={getStarted} className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div> 
       </div> 
       <GlobalFooter2/>

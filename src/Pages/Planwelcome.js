@@ -7,13 +7,13 @@ import { useLocation } from 'react-router-dom';
 export default function Planwelcome() {
 
   const location = useLocation();
-
+  const {email} = location.state || {};
 
   return (
     <div>
         <Masterhead/>
         <div className="body-container">
-            <Signup_step2/>
+            <Signup_step2 email={email}/>
         </div>
         <Globalfooter/>
     </div>

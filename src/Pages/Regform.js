@@ -24,7 +24,7 @@ export default function Regform() {
                 password:userInput
             })
         })
-        navigate('/signup/plan');
+        navigate('/signup/plan', {state:{email:email}});
     }
 
   return (

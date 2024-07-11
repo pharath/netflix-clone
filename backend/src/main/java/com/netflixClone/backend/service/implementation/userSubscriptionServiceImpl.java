@@ -18,9 +18,19 @@ public class userSubscriptionServiceImpl implements userSubscriptionService {
     public userSubscription planRegistration(userSubscription newSubscriber){
         LocalDateTime subscribeDate=LocalDateTime.now();
         LocalDateTime expireDate=subscribeDate.plusDays(30);
-        newSubscriber.setStartDate(subscribeDate);
-        newSubscriber.setExpDate(expireDate);
-        return userSubscriptionRepository.save(newSubscriber);
+
+        Optional<userSubscription>existingSubscriber=userSubscriptionRepository.findByEmail(newSubscriber.getEmail());
+        if (existingSubscriber.isPresent()) {
+            userSubscription existing=existingSubscriber.get();
+            existing.setStartDate(subscribeDate);
+            existing.setExpDate(expireDate);
+            existing.setPlan(newSubscriber.getPlan());
+            return userSubscriptionRepository.save(existing);
+        } else {
+            newSubscriber.setStartDate(subscribeDate);
+            newSubscriber.setExpDate(expireDate);
+            return userSubscriptionRepository.save(newSubscriber);
+        }
     }
     public boolean validateSubscription(String email){
         LocalDateTime currentDate=LocalDateTime.now();

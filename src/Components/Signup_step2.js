@@ -6,10 +6,9 @@ import { useNavigate } from 'react-router-dom';
 export default function Signup_step2({email}) {
   
   const navigate = useNavigate();
-  let testMail="xxx";
 
   function handleNext() {
-    navigate(`/signup/planform`, {state:{ email: testMail}});
+    navigate(`/signup/planform`, {state:{email:email}});
   }
 
   return (

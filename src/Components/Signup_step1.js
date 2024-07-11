@@ -20,7 +20,7 @@ export default function Signup_step1({email,password}) {
         //navigate home
       }
       else{
-        navigate(`/signup/plan`);
+        navigate(`/signup/plan`, {state:{email:email}});
       }
     }
     else{

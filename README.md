@@ -97,9 +97,6 @@ This project is a Netflix clone application built with a React frontend and a Sp
 5. Push to the branch (`git push origin feature-branch`)
 6. Create a new Pull Request
 
-## License
-
-This project is licensed under the MIT License.
 
 
 

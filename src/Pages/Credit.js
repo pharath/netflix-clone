@@ -9,10 +9,26 @@ import { useLocation } from 'react-router-dom';
 export default function Credit() {
 
 const location = useLocation();
-const {selectedCard,packagePrice} = location.state || {};  
+const {selectedCard,packagePrice,email} = location.state || {}; 
 
 const [value, setValue] = useState('');
 const [placeholder, setPlaceholder] = useState('Expiration date');
+
+
+function proceedPayment(){ //register subscribe plan to user email
+   let packageName=selectedCard;
+    fetch(`http://localhost:8080/api/subscribe`,{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email:email,
+            plan:packageName
+        })
+    })
+}
+
 
 const handleFocus = () => {
     setPlaceholder('MM/YY');
@@ -104,7 +120,7 @@ const handleCvvChange = (e) => {
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; I agree.
                 </div>
                 <br></br>
-                <Button variant="danger" className='btn-4'>Start Membership</Button><br></br>
+                <Button onClick={proceedPayment} variant="danger" className='btn-4'>Start Membership</Button><br></br>
                 <p className='payment-terms'>This page is protected by Google reCAPTCHA to ensure you're not a bot. <span className='text-primary'>Learn more</span> .</p>
                 <br></br><br></br><br></br>
             </div>

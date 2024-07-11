@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
 import './Signup.css'
 import Masterhead from '../Components/Masterhead';
 import Globalfooter from '../Components/Globalfooter';

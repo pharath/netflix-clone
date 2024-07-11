@@ -5,12 +5,14 @@ import Globalfooter from '../Components/Globalfooter'
 import PlanCard from '../Components/PlanCard'
 import Button from 'react-bootstrap/Button';
 import PlanCard2 from '../Components/PlanCard2'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 
 export default function Planform() {
+  
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const {email} = location.state || {};
   const [selectedCard, setSelectedCard] = useState('Premium');
 
   const handleSelect = (title1) => {
@@ -27,7 +29,7 @@ export default function Planform() {
       packagePrice=3.99;
     else if(selectedCard=='Mobile')
       packagePrice=2.99;
-    navigate('/signup/paymentPicker', { state: {selectedCard,packagePrice} });
+    navigate('/signup/paymentPicker', { state: {selectedCard,packagePrice,email} });
   };
 
   return (

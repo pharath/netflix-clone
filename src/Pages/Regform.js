@@ -12,7 +12,7 @@ export default function Regform() {
     const navigate=useNavigate();
     const { email } = location.state || {};
 
-    function userRegister(){ //use POST method to create new user account
+    function userRegister(){ //create new user account
         const userInput=document.getElementById('userPasswordInput').value;
         fetch(`http://localhost:8080/api/register`,{
             method:'POST',

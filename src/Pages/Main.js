@@ -10,7 +10,7 @@ export default function Main() {
 
   const navigate=useNavigate();
 
-  function getStarted(){ //use GET method to check, is email already registerd or not
+  function getStarted(){ //check, is email already registerd or not
     const userInput=document.getElementById('userEmailInput').value;
     const userInput2=document.getElementById('userEmailInput2').value;
     let Email='';
@@ -20,22 +20,23 @@ export default function Main() {
     if(userInput2){
       Email=userInput2;
     }
-    fetch(`http://localhost:8080/api/login/${Email}`)
-    .then(response => {
-    if (response.status === 204 || response.headers.get('content-length') === '0') {
-      navigate('/registration', { state: { email: Email } });
-      return null; 
+    if(Email){
+      fetch(`http://localhost:8080/api/login/${Email}`)
+      .then(response => {
+      if (response.status === 204 || response.headers.get('content-length') === '0') {
+        navigate('/registration', { state: { email: Email } });
+        return null; 
+      }
+      else{
+        return response.json(); 
+      }
+      })
+      .then(data => {
+      if (data) {
+        navigate('/signup', { state: { email: data.email, password: data.password } });
+      }
+      })
     }
-    else{
-      return response.json(); 
-    }
-    })
-    .then(data => {
-    if (data) {
-      navigate('/signup', { state: { email: data.email, password: data.password } });
-    }
-    })
-
   }
 
   return (

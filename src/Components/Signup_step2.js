@@ -1,8 +1,17 @@
 import React from 'react'
 import './Signup_step2.css'
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
-export default function Signup_step2() {
+export default function Signup_step2({email}) {
+  
+  const navigate = useNavigate();
+  let testMail="xxx";
+
+  function handleNext() {
+    navigate(`/signup/planform`, {state:{ email: testMail}});
+  }
+
   return (
     <div className='inner-container2'>
         <a href='/' className="signout-btn">
@@ -19,7 +28,7 @@ export default function Signup_step2() {
           </div> 
         <span className='feature-tick'><i class="bi bi-check-lg"></i></span><span className='features'> No ads and no extra fees. Ever.</span>
       </div>
-      <Button variant="danger" href='/signup/planform' className='btn-4'>Next</Button>
+      <Button onClick={handleNext} variant="danger" className='btn-4'>Next</Button>
     </div>
   )
 }

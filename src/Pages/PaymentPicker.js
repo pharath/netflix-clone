@@ -8,12 +8,11 @@ import { useNavigate } from 'react-router-dom';
 export default function PaymentPicker() {
     
     const navigate = useNavigate();
-
     const location = useLocation();
-    const {selectedCard,packagePrice} = location.state || {};
+    const {selectedCard,packagePrice,email} = location.state || {};
 
     const paymentPicked = () => {
-        navigate('/signup/creditoption', { state: {selectedCard,packagePrice} });
+        navigate('/signup/creditoption', { state: {selectedCard,packagePrice,email} });
     };
 
   return (

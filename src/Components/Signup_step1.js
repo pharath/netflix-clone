@@ -13,13 +13,25 @@ export default function Signup_step1({email,password}) {
     setErrorMessage(true);
   }
 
-  function userAuthentication(){
+  async function userAuthentication(){ //check is password matching and subscription is valid
     if(document.getElementById('userPasswordInput').value==password){
-      navigate('/signup/plan');
+      const isSubscriptionValid = await validateSubscription();
+      if(isSubscriptionValid){
+        //navigate home
+      }
+      else{
+        navigate(`/signup/plan`);
+      }
     }
     else{
       showErrorMessage();
     }
+  }
+
+  async function validateSubscription(){ //if subscription is valid return TRUE else FALSE
+    const response = await fetch(`http://localhost:8080/api/subscribe/${email}`);
+    const data = await response.json();
+    return data;
   }
 
   return (

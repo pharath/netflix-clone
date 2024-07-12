@@ -15,7 +15,7 @@ const [value, setValue] = useState('');
 const [placeholder, setPlaceholder] = useState('Expiration date');
 
 
-function proceedPayment(){ //register subscribe plan to user email
+function proceedPayment(){ //register selected subscribe plan to the user email
    let packageName=selectedCard;
     fetch(`http://localhost:8080/api/subscribe`,{
         method:'POST',

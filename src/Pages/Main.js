@@ -21,20 +21,16 @@ export default function Main() {
       Email=userInput2;
     }
     if(Email){
-      fetch(`http://localhost:8080/api/login/${Email}`)
+      fetch(`http://localhost:8080/api/verifyEmail/${Email}`)
       .then(response => {
-      if (response.status === 204 || response.headers.get('content-length') === '0') {
-        navigate('/registration', { state: { email: Email } });
-        return null; 
-      }
-      else{
-        return response.json(); 
-      }
+        return response.json();
       })
       .then(data => {
-      if (data) {
-        navigate('/signup', { state: { email: data.email, password: data.password } });
-      }
+        if (data) {
+          navigate('/signup',{state:{email:Email}});
+        } else {
+          navigate('/registration',{state:{email:Email}});
+        }
       })
     }
   }

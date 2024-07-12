@@ -1,10 +1,12 @@
 package com.netflixClone.backend.service;
 
 import com.netflixClone.backend.model.userAccount;
-import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 public interface userAccountService {
     userAccount userRegister(userAccount newUser);
-    userAccount userLogin(String email);
+    boolean emailExists(String email);
+    boolean userAuthentication(String email,String password);
 }

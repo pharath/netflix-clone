@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function Signup_step1({email,password}) {
+export default function Signup_step1({email}) {
 
   const navigate=useNavigate();
   const[errorMessage,setErrorMessage]=useState(false);
@@ -13,27 +13,35 @@ export default function Signup_step1({email,password}) {
     setErrorMessage(true);
   }
 
-  async function userAuthentication(){ //check is password matching and subscription is valid
-    if(document.getElementById('userPasswordInput').value==password){
-      const isSubscriptionValid = await validateSubscription();
-      if(isSubscriptionValid){
-        //navigate home
+  async function userAuthentication(){ //check, is loging credentials are correct
+    let inputPassword=document.getElementById('userPasswordInput').value;
+    fetch(`http://localhost:8080/api/authenticator/${email}/${inputPassword}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(async data => {
+      if (data) {
+        const isSubscriptionValid = await validateSubscription();
+        if(isSubscriptionValid){
+            //navigate home
+        }
+        else{
+        navigate(`/signup/plan`,{state:{email:email}});
+        }
+      } 
+      else {
+        showErrorMessage();
       }
-      else{
-        navigate(`/signup/plan`, {state:{email:email}});
-      }
-    }
-    else{
-      showErrorMessage();
-    }
-  }
+    })
 
-  async function validateSubscription(){ //if subscription is valid return TRUE else FALSE
+  async function validateSubscription(){ //check, is subscription valid
     const response = await fetch(`http://localhost:8080/api/subscribe/${email}`);
     const data = await response.json();
     return data;
   }
 
+
+}
   return (
     <div className='inner-container'>
       {errorMessage && <div className="error-message">

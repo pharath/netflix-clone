@@ -7,19 +7,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin(origins = "*")
 public class userAccountController {
     @Autowired
     private userAccountService userAccountService;
 
-    @PostMapping("/api/register")
+    @PostMapping("api/register")
     public ResponseEntity<userAccount> userRegister(@RequestBody userAccount newUser){
         return new ResponseEntity<userAccount>(userAccountService.userRegister(newUser), HttpStatus.CREATED);
     }
-
-    @GetMapping("/api/login/{email}")
-    public userAccount userLogin(@PathVariable String email){
-        return userAccountService.userLogin(email);
+    @GetMapping("api/verifyEmail/{email}")
+    public boolean emailExists(@PathVariable String email) {
+        return userAccountService.emailExists(email);
+    }
+    @GetMapping("api/authenticator/{email}/{password}")
+    public ResponseEntity<Boolean> userAuthentication(@PathVariable("email") String email, @PathVariable("password") String password){
+        boolean validity= userAccountService.userAuthentication(email,password);
+        return ResponseEntity.ok(validity);
     }
 }

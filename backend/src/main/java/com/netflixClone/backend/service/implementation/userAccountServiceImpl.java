@@ -16,11 +16,16 @@ public class userAccountServiceImpl implements userAccountService{
     public userAccount userRegister(userAccount newUser){
         return  userAccountRepository.save(newUser);
     }
-    public userAccount userLogin(String email){
+    public boolean emailExists(String email){
+        Optional<userAccount> userEmail= userAccountRepository.findByEmail(email);
+        return userEmail.isPresent();
+    }
+    public boolean userAuthentication(String email,String password){
         Optional<userAccount> userAccount= userAccountRepository.findByEmail(email);
-        if(userAccount.isPresent())
-            return userAccount.get();
+        String correctPassword=userAccount.get().getPassword();
+        if(correctPassword.equals(password))
+            return true;
         else
-            return null;
+            return false;
     }
 }

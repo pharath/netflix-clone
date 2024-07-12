@@ -14,7 +14,7 @@ export default function Logout() {
     }
 
     useEffect(() => {
-        const timer = setTimeout(logout, 30000); 
+        const timer = setTimeout(logout, 15000); 
         return () => clearTimeout(timer); 
     }, []);
 
@@ -25,8 +25,8 @@ export default function Logout() {
             <img className='brand-logo' src='/Assets/Netflix-brand.png'></img>
             <Button href='/login' className='text-light fw-bold btn-2' variant="danger">Sign In</Button>
           </div>
-          <div className="inner-box">
-            <div className="text-box">
+          <div className="inner-box-error">
+            <div className="text-box-error">
                 <h3 className='logout-text-head'>Leaving So Soon?</h3><br></br>
                 <p className='logout-text'>Just so you know, you don't always need to sign out of Netflix. It's only necessary if you're on a shared or public computer. </p>
                 <p className='logout-text'>You'll be redirected to Netflix.com in 30 seconds.</p><br></br>

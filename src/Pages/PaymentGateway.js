@@ -4,19 +4,56 @@ import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function PaymentGateway() {
 
 const location = useLocation();
+const navigate = useNavigate();
 const {selectedCard,packagePrice,email} = location.state || {}; 
 
-const [value, setValue] = useState('');
-const [placeholder, setPlaceholder] = useState('Expiration date');
-
+const[value, setValue]=useState('');
+const[cnameborderColor, setCnameBorderColor]=useState('');
+const[iscardnamevalid,setIscardnamevalid]=useState(false);
+const[cnumborderColor, setCnumBorderColor]=useState('');
+const[iscardnumbervalid,setIscardnumbervalid]=useState(false);
+const[cvvborderColor, setCvvBorderColor]=useState('');
+const[iscvvvalid,setIscvvvalid]=useState(false);
+const[edborderColor, setEdBorderColor]=useState('');
+const[isexpdatevalid,setIsexpdatevalid]=useState(false);
+const[placeholder, setPlaceholder]=useState('Expiration date');
+const[isChecked, setIsChecked]=useState(false);
+const[uncheckError,setUncheckError]=useState(false);
+const[defaultCard,setDefaultCard]=useState(true);
+const[visaCard,setVisaCard]=useState(false);
+const[masterCard,setMasterCard]=useState(false);
+const[amexCard,setAmexCard]=useState(false);
 
 function proceedPayment(){ //register selected subscribe plan to the user email
+   let cardName=document.getElementById('cardName').value;
+   let cardNumber=document.getElementById('cardNumber').value;
+   let cvv=document.getElementById('cvv').value;
+   let expDate=document.getElementById('expDate').value;
    let packageName=selectedCard;
+   
+   const validateField = (value, setBorderColor, setValidity) => {
+    if (value === '') {
+      setBorderColor('red');
+      setValidity(true);
+    } else {
+      setBorderColor('');
+      setValidity(false);
+    }
+  };
+  
+    validateField(cardName, setCnameBorderColor, setIscardnamevalid);
+    validateField(cardNumber, setCnumBorderColor, setIscardnumbervalid);
+    validateField(cvv, setCvvBorderColor, setIscvvvalid);
+    validateField(expDate, setEdBorderColor, setIsexpdatevalid);  
+   
+   isChecked?setUncheckError(false):setUncheckError(true);
+
+   if(cardName!=''&&cardNumber!=''&&cvv!=''&&expDate!=''&&isChecked){
     fetch(`http://localhost:8080/api/subscribe`,{
         method:'POST',
         headers: {
@@ -27,8 +64,17 @@ function proceedPayment(){ //register selected subscribe plan to the user email
             plan:packageName
         })
     })
+  }
 }
 
+const handleCheckboxChange = (e) => {
+    setIsChecked(e.target.checked);
+  };
+
+
+function planChange(){
+    navigate('/signup/planform',{state:{email:email}});
+}
 
 const handleFocus = () => {
     setPlaceholder('MM/YY');
@@ -65,6 +111,7 @@ const handleCardNumberChange = (e) => {
   }
 
   setCardNumber(formattedNumber);
+  identifyCardType(formattedNumber);
 };
 
 const handleCardNumberKeyDown = (e) => {
@@ -80,6 +127,33 @@ const handleCvvChange = (e) => {
     const inputValue = e.target.value.replace(/\D/g, ''); 
     setCvv(inputValue);
 };
+
+const identifyCardType = (number) => {
+    if (number.length < 1) setDefaultCard(true);
+    const firstTwoDigits = number.slice(0, 2);
+    const firstFourDigits = number.slice(0, 4);
+    if (number.startsWith('4')) {
+        setDefaultCard(false);
+        setVisaCard(true);
+        setMasterCard(false);
+        setAmexCard(false);
+    } else if (['51', '52', '53', '54', '55'].includes(firstTwoDigits) || (firstFourDigits >= '2221' && firstFourDigits <= '2720')) {
+        setDefaultCard(false);
+        setMasterCard(true);
+        setVisaCard(false);
+        setAmexCard(false);
+    } else if (['34', '37'].includes(firstTwoDigits)) {
+        setDefaultCard(false);
+        setAmexCard(true);
+        setVisaCard(false);
+        setMasterCard(false);
+    } else {
+        setDefaultCard(true);
+        setVisaCard(false);
+        setMasterCard(false);
+        setAmexCard(false);
+    }
+  };
 
   return (
     <div>
@@ -98,27 +172,42 @@ const handleCvvChange = (e) => {
                 </div>
                 <Form>
                     <div className="input-sections">
-                        <Form.Control className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19"/>
-                        <img className='input-icon' src='/Assets/input-cardno.png'></img>
+                        <Form.Control id='cardNumber' className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19" style={{ borderColor: cnumborderColor }}/>
+                        {defaultCard && <img className='input-icon ' src='/Assets/input-cardno.png'></img>}
+                        {visaCard && <img className='input-icon input-icon5' src='/Assets/visa.png'></img>}
+                        {masterCard && <img className='input-icon input-icon5' src='/Assets/master.png'></img>}
+                        {amexCard && <img className='input-icon input-icon5' src='/Assets/amex.png'></img>}
                     </div>
+                    {iscardnumbervalid && <div className="fill-error">Please enter a card number.</div>}                
                     <div className="input-sections2">
-                        <Form.Control className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" />
-                        <Form.Control className='credit-input' type="text" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"/>
+                        <Form.Control id='expDate' className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" style={{ borderColor: edborderColor }}/>
+                        <Form.Control id='cvv' className='credit-input' type="text" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }}/>
                         <img className='input-icon-cvv' src='/Assets/input-cvv.png'></img>
                     </div>
+                    <div className="fill-error-conatiner">
+                        <div className="fill-error-left">
+                            {isexpdatevalid && <div className="fill-error">Please enter an expiration date.</div>}
+                        </div>
+                        <div className="fill-error-right">
+                            {iscvvvalid && <div className="fill-error">Please enter a CVV.</div>}
+                        </div>                         
+                    </div>                   
                     <div className="input-sections">
-                        <Form.Control className='credit-input' type="text" placeholder="Name on card" />
+                        <Form.Control id='cardName' className='credit-input' type="text" placeholder="Name on card" style={{ borderColor: cnameborderColor }}/>
                     </div>
+                    {iscardnamevalid && <div className="fill-error">Name is required.</div>} 
+                    
                 </Form>
                 <div className="package-info">
                     <p className='package-price'>USD <span>{packagePrice}</span>/month</p>
                     <p className='package-name'>{selectedCard}</p>
-                    <a href='/signup/planform' className='package-change text-primary'>Change</a>
+                    <a onClick={planChange} className='package-change text-primary'>Change</a>
                 </div>
                 <p className='payment-terms'>By checking the checkbox below, you agree to our <span className='text-primary'>Terms of Use</span> , <span className='text-primary'>Privacy Statement</span>, and that you are over 18. Netflix will automatically continue your membership and charge the membership fee (currently USD <span>{packagePrice}</span>/month) to your payment method until you cancel. You may cancel at any time to avoid future charges.</p>
                 <div className="check-box">
-                    <Form.Check className='ch-box' aria-label="option 1" />&nbsp; I agree.
+                    <Form.Check className='ch-box' aria-label="option 1" checked={isChecked} onChange={handleCheckboxChange}/>&nbsp; I agree.
                 </div>
+                {uncheckError && <div className="uncheck-error">You must acknowledge that you have read and agree to the Terms of Use to continue.</div>}  
                 <br></br>
                 <Button onClick={proceedPayment} variant="danger" className='btn-4'>Start Membership</Button><br></br>
                 <p className='payment-terms'>This page is protected by Google reCAPTCHA to ensure you're not a bot. <span className='text-primary'>Learn more</span> .</p>

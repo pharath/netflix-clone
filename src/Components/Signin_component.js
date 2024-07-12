@@ -8,6 +8,7 @@ export default function Signin_component({email}) {
 
   const navigate=useNavigate();
   const[errorMessage,setErrorMessage]=useState(false);
+  const [borderColor, setBorderColor] = useState('');
 
   function showErrorMessage(){
     setErrorMessage(true);
@@ -15,6 +16,10 @@ export default function Signin_component({email}) {
 
   async function userAuthentication(){ //check, is loging credentials are correct
     let inputPassword=document.getElementById('userPasswordInput').value;
+    if(inputPassword==''){
+      setBorderColor('red');
+    }
+    else{
     fetch(`http://localhost:8080/api/authenticator/${email}/${inputPassword}`)
     .then(response => {
       return response.json();
@@ -40,6 +45,8 @@ export default function Signin_component({email}) {
     return data;
   }
 }
+}
+
   return (
     <div className='inner-container'>
       {errorMessage && <div className="error-message">
@@ -53,7 +60,7 @@ export default function Signin_component({email}) {
       <span>Email</span>
       <span className='userEmail'>{email}</span><br></br>
       <Form>
-          <Form.Control id='userPasswordInput' className='password-input' type="password" placeholder="Enter your password" />
+          <Form.Control id='userPasswordInput' className='password-input' type="password" placeholder="Enter your password" style={{ borderColor: borderColor }}/>
       </Form><br></br>
       <Button onClick={userAuthentication} variant="danger" className='btn-4'>Next</Button>
     </div>

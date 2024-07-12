@@ -90,3 +90,23 @@
     margin-left: 23%;
     height: 4%;
 }
+.uncheck-error{
+    color: rgb(212, 0, 0);
+    font-weight: 400;
+}
+.fill-error{
+    color: rgb(212, 0, 0);
+    font-size: 80%;
+}
+.fill-error-conatiner{
+    display: flex;
+}
+.fill-error-left{
+    width: 51.5%;
+}
+.fill-error-right{
+    width: 48.5%;
+}
+.input-icon5{
+    height: 3.7%;
+}

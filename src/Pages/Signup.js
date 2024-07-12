@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './Signup.css'
 import { useNavigate, useLocation } from 'react-router-dom';
 import Masterhead from '../Components/Masterhead'
@@ -8,12 +8,17 @@ import Button from 'react-bootstrap/Button';
 
 export default function Signup() {
 
+    const [borderColor, setBorderColor] = useState('');
     const location = useLocation();
     const navigate=useNavigate();
     const { email } = location.state || {};
 
     function userRegister(){ //create account for new user
         const userInput=document.getElementById('userPasswordInput').value;
+        if(userInput==''){
+            setBorderColor('red');
+        }
+        else{
         fetch(`http://localhost:8080/api/register`,{
             method:'POST',
             headers: {
@@ -25,6 +30,7 @@ export default function Signup() {
             })
         })
         navigate('/signup/plan', {state:{email:email}});
+        }
     }
 
   return (
@@ -41,10 +47,10 @@ export default function Signup() {
                 We hate paperwork, too.</h6><br></br>
                 <Form className='addPassword'>
                     <Form.Control className='password-input add-password' type="email" defaultValue={email}/>
-                    <Form.Control id='userPasswordInput' className='password-input add-password' type="password" placeholder="Add a password" /><br></br>
+                    <Form.Control id='userPasswordInput' className='password-input add-password' type="password" placeholder="Add a password"  style={{ borderColor: borderColor }}/><br></br>
                 </Form>
                 <div className="check-box-add-password">
-                    <Form.Check className='ch-box' aria-label="option 1" />&nbsp; Please do not email me Netflix special offers.
+                    <Form.Check checked className='ch-box' aria-label="option 1" />&nbsp; Please do not email me Netflix special offers.
                 </div><br></br>
                 <Button onClick={userRegister} variant="danger" className='btn-4 register-next'>Next</Button>
             </div>

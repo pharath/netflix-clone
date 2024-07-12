@@ -2,13 +2,14 @@
     background-image: url('./logout.jpg');
     background-size: cover;
 }
-.inner-box{
+.inner-box-error{
     background-color: white;
     height: 45%;
     width: 28%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     color: black;
     margin-top: 10%;
 }
@@ -16,7 +17,7 @@
     font-size: 100%;
     text-align: left;
 }
-.text-box{
+.text-box-error{
     width: 80%;
     height: 100%;
     display: flex;

@@ -13,7 +13,7 @@ export default function Planwelcome_component({email}) {
 
   return (
     <div className='inner-container2'>
-        <a href='/' className="signout-btn">
+        <a href='/signup/logout' className="signout-btn">
             <h5 className='signout'>Sign Out</h5>
         </a>
         <div className="tick"><i class="bi bi-check-circle"></i></div><br></br>

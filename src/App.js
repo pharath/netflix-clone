@@ -1,4 +1,3 @@
-
 import './App.css';
 import Main from './Pages/Main';
 import Signup from './Pages/Signin';
@@ -11,8 +10,7 @@ import Registration from './Pages/Registration';
 import Regform from './Pages/Signup';
 import Planwelcome from './Pages/Planwelcome';
 import PaymentGateway from './Pages/PaymentGateway';
-
-
+import Logout from './Pages/Logout';
 
 function App() {
   return (
@@ -29,8 +27,9 @@ function App() {
           <Route path='/registration' element={<Registration/>}></Route>
           <Route path='/signup' element={<Regform/>}></Route>
           <Route path='/signup/plan' element={<Planwelcome/>}></Route>
+          <Route path='/signup/logout' element={<Logout/>}></Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>    
     </div>
   );
 }

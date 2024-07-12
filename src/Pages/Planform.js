@@ -34,7 +34,7 @@ export default function Planform() {
 
   return (
     <div className='planform-container'>
-        <a href='/' className="signout-btn">
+        <a href='/signup/logout' className="signout-btn">
             <h5 className='signout'>Sign Out</h5>
         </a>
         <Masterhead/>

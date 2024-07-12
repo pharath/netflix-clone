@@ -18,7 +18,7 @@ export default function Registration() {
 
   return (
     <div>
-        <a href='/' className="signout-btn">
+        <a href='/signup/logout' className="signout-btn">
             <h5 className='signout'>Sign Out</h5>
         </a>
         <Masterhead/>

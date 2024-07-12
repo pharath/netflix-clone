@@ -9,10 +9,25 @@ export default function Signin_component({email}) {
   const navigate=useNavigate();
   const[errorMessage,setErrorMessage]=useState(false);
   const [borderColor, setBorderColor] = useState('');
+  const[showPassword,setShowPassword]=useState(true);
+  const[hidePassword,setHidePassword]=useState(false);
+  const[passwordVisible,setPasswordVisible]=useState(false);
 
+  function visiblePassword(){
+    setHidePassword(true);
+    setPasswordVisible(true);
+    setShowPassword(false);
+  }
+  function nonVisiblePassword(){
+    setShowPassword(true);
+    setPasswordVisible(false);
+    setHidePassword(false);
+  }
+  
   function showErrorMessage(){
     setErrorMessage(true);
   }
+
 
   async function userAuthentication(){ //check, is loging credentials are correct
     let inputPassword=document.getElementById('userPasswordInput').value;
@@ -47,6 +62,7 @@ export default function Signin_component({email}) {
 }
 }
 
+
   return (
     <div className='inner-container'>
       {errorMessage && <div className="error-message">
@@ -60,7 +76,9 @@ export default function Signin_component({email}) {
       <span>Email</span>
       <span className='userEmail'>{email}</span><br></br>
       <Form>
-          <Form.Control id='userPasswordInput' className='password-input' type="password" placeholder="Enter your password" style={{ borderColor: borderColor }}/>
+          {showPassword && <img onClick={visiblePassword} className='passwordToggle' src='./Assets/show.png'></img>}
+          {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle' src='./Assets/hide.png'></img>}
+          <Form.Control id='userPasswordInput' className='password-input' type={passwordVisible ? 'text' : 'password'} placeholder="Enter your password" style={{ borderColor: borderColor }}/>
       </Form><br></br>
       <Button onClick={userAuthentication} variant="danger" className='btn-4'>Next</Button>
     </div>

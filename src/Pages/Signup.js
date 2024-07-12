@@ -12,6 +12,21 @@ export default function Signup() {
     const location = useLocation();
     const navigate=useNavigate();
     const { email } = location.state || {};
+    const[showPassword,setShowPassword]=useState(true);
+    const[hidePassword,setHidePassword]=useState(false);
+    const[passwordVisible,setPasswordVisible]=useState(false);
+
+    function visiblePassword(){
+        setHidePassword(true);
+        setPasswordVisible(true);
+        setShowPassword(false);
+    }
+    function nonVisiblePassword(){
+        setShowPassword(true);
+        setPasswordVisible(false);
+        setHidePassword(false);
+    }
+  
 
     function userRegister(){ //create account for new user
         const userInput=document.getElementById('userPasswordInput').value;
@@ -47,10 +62,12 @@ export default function Signup() {
                 We hate paperwork, too.</h6><br></br>
                 <Form className='addPassword'>
                     <Form.Control className='password-input add-password' type="email" defaultValue={email}/>
-                    <Form.Control id='userPasswordInput' className='password-input add-password' type="password" placeholder="Add a password"  style={{ borderColor: borderColor }}/><br></br>
+                    {showPassword && <img onClick={visiblePassword} className='passwordToggle passwordToggle2' src='./Assets/show.png'></img>}
+                    {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle passwordToggle2' src='./Assets/hide.png'></img>}
+                    <Form.Control id='userPasswordInput' className='password-input add-password' type={passwordVisible ? 'text' : 'password'} placeholder="Add a password"  style={{ borderColor: borderColor }}/><br></br>
                 </Form>
                 <div className="check-box-add-password">
-                    <Form.Check checked className='ch-box' aria-label="option 1" />&nbsp; Please do not email me Netflix special offers.
+                    <Form.Check className='ch-box' aria-label="option 1" />&nbsp; Please do not email me Netflix special offers.
                 </div><br></br>
                 <Button onClick={userRegister} variant="danger" className='btn-4 register-next'>Next</Button>
             </div>

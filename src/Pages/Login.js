@@ -16,6 +16,20 @@ export default function Login() {
     const[signCodeBtn,setSignCodeBtn]=useState(true);
     const[usePasswordBtn,setUsePassword]=useState(false);
     const[passwordInput,setPasswordInput]=useState(true);
+    const[showPassword,setShowPassword]=useState(true);
+    const[hidePassword,setHidePassword]=useState(false);
+    const[passwordVisible,setPasswordVisible]=useState(false);
+
+    function visiblePassword(){
+        setHidePassword(true);
+        setPasswordVisible(true);
+        setShowPassword(false);
+    }
+    function nonVisiblePassword(){
+        setShowPassword(true);
+        setPasswordVisible(false);
+        setHidePassword(false);
+    }
 
     function usePassword(){
         setPasswordInput(true);
@@ -24,6 +38,9 @@ export default function Login() {
         setMessageRateText(false);
         setSignInBtn(true);
         setSignInCodeBtn(false);
+        setShowPassword(true);
+        setHidePassword(false);
+        setPasswordVisible(false);
     }
     function useCode(){
         setPasswordInput(false);
@@ -32,6 +49,8 @@ export default function Login() {
         setMessageRateText(true);
         setSignInBtn(false);
         setSignInCodeBtn(true);
+        setShowPassword(false);
+        setHidePassword(false);
     }
 
     const[errorMessage,setErrorMessage]=useState(false);
@@ -96,8 +115,10 @@ export default function Login() {
                   <span className='error'>Incorrect password for<br></br>{emailInput}</span>
                 </div>}
                 <Form.Control id='inputEmail' className='email-input-login py-3' type="email" placeholder="Email or mobile number" />
-                {messageRateText && <p className='message-rate'>Message and data rates may apply</p>}      
-                {passwordInput && <Form.Control id='inputPassword' className='email-input-login py-3' type="password" placeholder="Password" />} 
+                {messageRateText && <p className='message-rate'>Message and data rates may apply</p>}
+                {showPassword && <img onClick={visiblePassword} className='passwordToggle passwordToggle3' src='./Assets/showwhite.png'></img>}
+                {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle passwordToggle3' src='./Assets/hidewhite.png'></img>}      
+                {passwordInput && <Form.Control id='inputPassword' className='email-input-login py-3' type={passwordVisible ? 'text' : 'password'} placeholder="Password" />} 
                 {signInBtn && <Button onClick={signin} variant="danger" className='btn-4 signin-btn2 login-btn'>Sign In</Button>}             
                 {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2 login-btn'>Send Sign-In Code</Button>}     
                 <p className='signin-text'>OR</p>

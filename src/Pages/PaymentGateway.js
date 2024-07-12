@@ -181,7 +181,7 @@ const identifyCardType = (number) => {
                     {iscardnumbervalid && <div className="fill-error">Please enter a card number.</div>}                
                     <div className="input-sections2">
                         <Form.Control id='expDate' className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" style={{ borderColor: edborderColor }}/>
-                        <Form.Control id='cvv' className='credit-input' type="text" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }}/>
+                        <Form.Control id='cvv' className='credit-input' type="password" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }}/>
                         <img className='input-icon-cvv' src='/Assets/input-cvv.png'></img>
                     </div>
                     <div className="fill-error-conatiner">

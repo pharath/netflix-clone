@@ -1,9 +1,9 @@
 import React from 'react'
-import './Signup_step2.css'
+import './Planwelcome_component.css'
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function Signup_step2({email}) {
+export default function Planwelcome_component({email}) {
   
   const navigate = useNavigate();
 

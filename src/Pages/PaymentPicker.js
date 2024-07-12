@@ -12,7 +12,7 @@ export default function PaymentPicker() {
     const {selectedCard,packagePrice,email} = location.state || {};
 
     const paymentPicked = () => {
-        navigate('/signup/creditoption', { state: {selectedCard,packagePrice,email} });
+        navigate('/signup/pay', { state: {selectedCard,packagePrice,email} });
     };
 
   return (

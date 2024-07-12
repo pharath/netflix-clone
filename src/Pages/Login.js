@@ -3,10 +3,13 @@ import './Login.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import GlobalFooter2 from '../Components/Globalfooter2';
+import { useNavigate } from 'react-router-dom';
 
 
 
 export default function Login() {
+    const navigate=useNavigate();
+
     const[messageRateText,setMessageRateText]=useState(false);
     const[signInBtn,setSignInBtn]=useState(true);
     const[signInCodeBtn,setSignInCodeBtn]=useState(false);
@@ -31,23 +34,75 @@ export default function Login() {
         setSignInCodeBtn(true);
     }
 
+    const[errorMessage,setErrorMessage]=useState(false);
+    const[emailInput,setEmailInput]=useState('');
+  
+    async function signin(){ //check, is email registerd and credential correct
+      let email=document.getElementById('inputEmail').value;
+      let password=document.getElementById('inputPassword').value;
+      setEmailInput(email);
+
+      fetch(`http://localhost:8080/api/verifyEmail/${email}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        if (data) {
+          userAuthentication();
+        } else {
+          setErrorMessage(true);
+        }
+      })
+
+    async function userAuthentication(){ //check, is loging credentials are correct
+      fetch(`http://localhost:8080/api/authenticator/${email}/${password}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(async data => {
+        if (data) {
+          const isSubscriptionValid = await validateSubscription(email);
+          if(isSubscriptionValid){
+              //navigate home
+          }
+          else{
+          navigate(`/signup/plan`,{state:{email:email}}); //navigate to finish setup
+          }
+        } 
+        else {
+          setErrorMessage(true);
+        }
+      })
+    }  
+
+    async function validateSubscription(){ //check, is subscription valid
+      const response = await fetch(`http://localhost:8080/api/subscribe/${email}`);
+      const data = await response.json();
+      return data;
+    }
+
+  }
   return (
     <div>
-        <div className="home-main-container">
+        <div className="home-main-container home-main-container-error">
           <div className="hero-masterhead">
             <img className='brand-logo barnd-logo-login' src='/Assets/Netflix-brand.png'></img>
           </div>
           <div className="login-container">
             <div className="login-inner-container">
                 <h2 className='signin-header'>Sign In</h2>
-                <Form.Control className='email-input-login py-3' type="email" placeholder="Email or mobile number" />
+                {errorMessage && <div className="error-message error-preview-2">
+                  <img className='error-img' src='/Assets/error.png'></img>
+                  <span className='error'>Incorrect password for<br></br>{emailInput}</span>
+                </div>}
+                <Form.Control id='inputEmail' className='email-input-login py-3' type="email" placeholder="Email or mobile number" />
                 {messageRateText && <p className='message-rate'>Message and data rates may apply</p>}      
-                {passwordInput && <Form.Control className='email-input-login py-3' type="email" placeholder="Password" />} 
-                {signInBtn && <Button variant="danger" className='btn-4 signin-btn2'>Sign In</Button>}             
-                {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2'>Send Sign-In Code</Button>}     
+                {passwordInput && <Form.Control id='inputPassword' className='email-input-login py-3' type="password" placeholder="Password" />} 
+                {signInBtn && <Button onClick={signin} variant="danger" className='btn-4 signin-btn2 login-btn'>Sign In</Button>}             
+                {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2 login-btn'>Send Sign-In Code</Button>}     
                 <p className='signin-text'>OR</p>
-                {signCodeBtn && <Button variant="light" onClick={useCode} className='text-light btn-4 signin-btn2 signin-btn-code'>Use a Sign-In Code</Button>}
-                {usePasswordBtn && <Button variant="light" onClick={usePassword} className='text-light btn-4 signin-btn2 signin-btn-code'>Use Password</Button>}
+                {signCodeBtn && <Button variant="light" onClick={useCode} className='text-light btn-4 signin-btn2 signin-btn-code login-btn'>Use a Sign-In Code</Button>}
+                {usePasswordBtn && <Button variant="light" onClick={usePassword} className='text-light btn-4 signin-btn2 signin-btn-code login-btn'>Use Password</Button>}
                 <div className="check-box signin-check-box">
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; Remember me
                 </div>
@@ -56,7 +111,7 @@ export default function Login() {
             </div>
           </div>     
         </div>
-        <div className="home-main-shadow home-main-shadow2"></div>
+        <div className="home-main-shadow home-main-shadow2 home-main-shadow2-error"></div>
         <div className="home-main-hero home-main-hero2"></div> 
         <GlobalFooter2/>
     </div>

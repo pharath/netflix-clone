@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './Credit.css'
+import './PaymentGateway.css'
 import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useLocation } from 'react-router-dom';
 
-export default function Credit() {
+export default function PaymentGateway() {
 
 const location = useLocation();
 const {selectedCard,packagePrice,email} = location.state || {}; 

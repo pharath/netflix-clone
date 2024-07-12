@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import './Signup_step1.css'
+import './Signin_component.css'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
-export default function Signup_step1({email}) {
+export default function Signin_component({email}) {
 
   const navigate=useNavigate();
   const[errorMessage,setErrorMessage]=useState(false);
@@ -39,8 +39,6 @@ export default function Signup_step1({email}) {
     const data = await response.json();
     return data;
   }
-
-
 }
   return (
     <div className='inner-container'>

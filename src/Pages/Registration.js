@@ -13,7 +13,7 @@ export default function Registration() {
   const { email } = location.state || {};
 
   function handleNext(){
-    navigate('/signup/regform', { state: { email: email } });
+    navigate('/signup', { state: { email: email } });
   }
 
   return (

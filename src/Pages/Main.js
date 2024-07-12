@@ -27,7 +27,7 @@ export default function Main() {
       })
       .then(data => {
         if (data) {
-          navigate('/signup',{state:{email:Email}});
+          navigate('/signin',{state:{email:Email}});
         } else {
           navigate('/registration',{state:{email:Email}});
         }

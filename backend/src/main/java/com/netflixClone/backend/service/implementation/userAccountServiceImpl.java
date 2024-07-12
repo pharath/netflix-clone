@@ -23,9 +23,6 @@ public class userAccountServiceImpl implements userAccountService{
     public boolean userAuthentication(String email,String password){
         Optional<userAccount> userAccount= userAccountRepository.findByEmail(email);
         String correctPassword=userAccount.get().getPassword();
-        if(correctPassword.equals(password))
-            return true;
-        else
-            return false;
+        return correctPassword.equals(password);
     }
 }

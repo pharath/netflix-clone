@@ -29,7 +29,7 @@ const[visaCard,setVisaCard]=useState(false);
 const[masterCard,setMasterCard]=useState(false);
 const[amexCard,setAmexCard]=useState(false);
 
-function proceedPayment(){ //register selected subscribe plan to the user email
+function handlePayment(){ 
    let cardName=document.getElementById('cardName').value;
    let cardNumber=document.getElementById('cardNumber').value;
    let cvv=document.getElementById('cvv').value;
@@ -54,6 +54,40 @@ function proceedPayment(){ //register selected subscribe plan to the user email
    isChecked?setUncheckError(false):setUncheckError(true);
 
    if(cardName!=''&&cardNumber!=''&&cvv!=''&&expDate!=''&&isChecked){
+    validateCard(email, cardNumber, cardName, expDate)
+    .then(isValid => {
+        if (isValid) {
+            proceedPayment(packagePrice, email, cardNumber, cardName, cvv, expDate);
+            subscribePlan(email, packageName);
+        } else {
+            // Handle case where card validation fails (if necessary)
+        }
+    });
+    }
+}
+
+function validateCard(email, cardNumber, cardHoldName, expDate) { // check is card valid(card number & expire date)
+    return fetch('http://localhost:8080/api/payment/card', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email,
+            cardNumber: cardNumber,
+            cardHoldName: cardHoldName,
+            expDate: expDate,
+        }),
+    })
+    .then(response => {
+        return response.json(); 
+    })
+    .then(data => {
+        return data; 
+    });
+}
+
+function subscribePlan(email,packageName){ // register select plan to user email
     fetch(`http://localhost:8080/api/subscribe`,{
         method:'POST',
         headers: {
@@ -64,8 +98,31 @@ function proceedPayment(){ //register selected subscribe plan to the user email
             plan:packageName
         })
     })
-  }
 }
+
+async function proceedPayment(paymentAmount, email, cardNumber, cardHoldName, cvv, expDate) { // store payment/card details 
+    await fetch('http://localhost:8080/api/payment/proceed', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            newCard: {
+                email: email,
+                cardNumber: cardNumber,
+                cardHoldName: cardHoldName,
+                expDate: expDate,
+                cvv: parseInt(cvv, 10)
+            },
+            newPayment: {
+                email: email,
+                cardNumber: cardNumber,
+                paymentAmount: paymentAmount
+            }
+        }),
+    });
+}
+
 
 const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
@@ -209,7 +266,7 @@ const identifyCardType = (number) => {
                 </div>
                 {uncheckError && <div className="uncheck-error">You must acknowledge that you have read and agree to the Terms of Use to continue.</div>}  
                 <br></br>
-                <Button onClick={proceedPayment} variant="danger" className='btn-4'>Start Membership</Button><br></br>
+                <Button onClick={handlePayment} variant="danger" className='btn-4'>Start Membership</Button><br></br>
                 <p className='payment-terms'>This page is protected by Google reCAPTCHA to ensure you're not a bot. <span className='text-primary'>Learn more</span> .</p>
                 <br></br><br></br><br></br>
             </div>

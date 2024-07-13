@@ -15,7 +15,7 @@ public class paymentController {
     @Autowired
     private paymentService paymentService;
 
-    @GetMapping("api/payment/card")
+    @PostMapping("api/payment/card")
     public ResponseEntity<Boolean> cardValidation(@RequestBody card cardDetails){
         boolean validity= paymentService.cardValidation(cardDetails);
         return ResponseEntity.ok(validity);

@@ -80,16 +80,16 @@ export default function Login() {
       })
       .then(async data => {
         if (data) {
-          const isSubscriptionValid = await validateSubscription(email);
-          if(isSubscriptionValid){
-              //navigate home
-          }
-          else{
-          navigate(`/signup/plan`,{state:{email:email}}); //navigate to finish setup
-          }
+            const isSubscriptionValid = await validateSubscription(email);
+            if(isSubscriptionValid){
+                navigate('/browse');
+            }
+            else{
+                navigate(`/signup/plan`,{state:{email:email}}); 
+            }
         } 
         else {
-          setErrorMessage(true);
+            setErrorMessage(true);
         }
       })
     }  

@@ -110,3 +110,11 @@
 .input-icon5{
     height: 3.7%;
 }
+.payment-error{
+    padding-top: 6%;
+    padding-bottom: 6%;
+    height: 25vh;
+}
+.payment-error-text{
+    margin-left: 3%;
+}

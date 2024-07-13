@@ -28,6 +28,7 @@ const[defaultCard,setDefaultCard]=useState(true);
 const[visaCard,setVisaCard]=useState(false);
 const[masterCard,setMasterCard]=useState(false);
 const[amexCard,setAmexCard]=useState(false);
+const[cardErrorDisplay,SetCardErrorDisplay]=useState(false);
 
 function handlePayment(){ 
    let cardName=document.getElementById('cardName').value;
@@ -59,8 +60,9 @@ function handlePayment(){
         if (isValid) {
             proceedPayment(packagePrice, email, cardNumber, cardName, cvv, expDate);
             subscribePlan(email, packageName);
+            navigate('/browse');
         } else {
-            // Handle case where card validation fails (if necessary)
+            SetCardErrorDisplay(true);
         }
     });
     }
@@ -220,6 +222,10 @@ const identifyCardType = (number) => {
         <Masterhead/>
         <div className="body-container2">
             <div className="credit-container">
+                {cardErrorDisplay && <div className="error-message error-preview-2 payment-error">
+                  <img className='error-img' src='/Assets/error.png'></img>
+                  <span className='error payment-error-text'>There appears to be a problem<br></br> with the card you are trying to use.<br></br> Please use a different card or check<br></br> with your bank to make sure your card is enabled for international transactions.</span>
+                </div>}
                 <span>STEP <span className='bold'>3</span> OF <span className='bold'>3</span></span>
                 <h2>Set up your credit or debit card</h2>
                 <div className="payment-types-container">

@@ -43,7 +43,7 @@ export default function Signin_component({email}) {
       if (data) {
         const isSubscriptionValid = await validateSubscription();
         if(isSubscriptionValid){
-            //navigate home
+          navigate('/browse');
         }
         else{
         navigate(`/signup/plan`,{state:{email:email}});

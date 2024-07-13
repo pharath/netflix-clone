@@ -28,42 +28,51 @@ export default function Signin_component({email}) {
     setErrorMessage(true);
   }
 
-
-  async function userAuthentication(){ //check, is loging credentials are correct
+  function signIn(){
     let inputPassword=document.getElementById('userPasswordInput').value;
     if(inputPassword==''){
       setBorderColor('red');
     }
     else{
-    fetch(`http://localhost:8080/api/authenticator/${email}/${inputPassword}`)
+      authenticator(email,inputPassword)
+      .then(isCredentialsValid => {
+        if (isCredentialsValid) {
+            subscriptionValidator(email)
+            .then(isSubscriptionValid => {
+              if (isSubscriptionValid) {
+                  navigate('/browse');
+              } else {
+                  navigate(`/signup/plan`,{state:{email:email}});
+              }
+            });
+        } else {
+          showErrorMessage();
+        }
+      });
+    }
+  }
+
+  function authenticator(email,password){ //check, is login credentials correct
+    return fetch(`http://localhost:8080/api/authenticator/${email}/${password}`)
     .then(response => {
       return response.json();
     })
-    .then(async data => {
-      if (data) {
-        const isSubscriptionValid = await validateSubscription();
-        if(isSubscriptionValid){
-          navigate('/browse');
-        }
-        else{
-        navigate(`/signup/plan`,{state:{email:email}});
-        }
-      } 
-      else {
-        showErrorMessage();
-      }
-    })
-
-  async function validateSubscription(){ //check, is subscription valid
-    const response = await fetch(`http://localhost:8080/api/subscribe/${email}`);
-    const data = await response.json();
-    return data;
+    .then(data => {
+      return data; 
+    });
   }
-}
-}
 
+  function subscriptionValidator(email){ //check, is subscription valid(not expired) & are there any subscription to the user
+    return fetch(`http://localhost:8080/api/subscribe/${email}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      return data; 
+    });
+  }
 
-  return (
+return (
     <div className='inner-container'>
       {errorMessage && <div className="error-message">
         <img className='error-img' src='/Assets/error.png'></img>
@@ -80,7 +89,7 @@ export default function Signin_component({email}) {
           {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle' src='./Assets/hide.png'></img>}
           <Form.Control id='userPasswordInput' className='password-input' type={passwordVisible ? 'text' : 'password'} placeholder="Enter your password" style={{ borderColor: borderColor }}/>
       </Form><br></br>
-      <Button onClick={userAuthentication} variant="danger" className='btn-4'>Next</Button>
+      <Button onClick={signIn} variant="danger" className='btn-4'>Next</Button>
     </div>
   )
 }

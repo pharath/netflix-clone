@@ -56,51 +56,64 @@ export default function Login() {
     const[errorMessage,setErrorMessage]=useState(false);
     const[emailInput,setEmailInput]=useState('');
   
-    async function signin(){ //check, is email registerd and credential correct
+  function signIn(){
       let email=document.getElementById('inputEmail').value;
       let password=document.getElementById('inputPassword').value;
       setEmailInput(email);
-
-      fetch(`http://localhost:8080/api/verifyEmail/${email}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        if (data) {
-          userAuthentication();
+      verfyEmail(email)
+      .then(isEmailValid => {
+        if (isEmailValid) {
+            authenticator(email,password)
+            .then(isCredentialsValid => {
+              if (isCredentialsValid) {
+                  subscriptionValidator(email)
+                  .then(isSubscriptionValid => {
+                    if (isSubscriptionValid) {
+                        navigate('/browse');
+                    } else {
+                        navigate(`/signup/plan`,{state:{email:email}}); 
+                    }
+                  });
+              } else {
+                  setErrorMessage(true);
+              }
+            });
         } else {
-          setErrorMessage(true);
-        }
-      })
-
-    async function userAuthentication(){ //check, is loging credentials are correct
-      fetch(`http://localhost:8080/api/authenticator/${email}/${password}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(async data => {
-        if (data) {
-            const isSubscriptionValid = await validateSubscription(email);
-            if(isSubscriptionValid){
-                navigate('/browse');
-            }
-            else{
-                navigate(`/signup/plan`,{state:{email:email}}); 
-            }
-        } 
-        else {
             setErrorMessage(true);
         }
-      })
-    }  
-
-    async function validateSubscription(){ //check, is subscription valid
-      const response = await fetch(`http://localhost:8080/api/subscribe/${email}`);
-      const data = await response.json();
-      return data;
-    }
-
+      });
   }
+
+  function verfyEmail(email){ //check, is email already registerd or not
+    return fetch(`http://localhost:8080/api/verifyEmail/${email}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      return data; 
+    });
+  }
+
+  function authenticator(email,password){ //check, is login credentials correct
+    return fetch(`http://localhost:8080/api/authenticator/${email}/${password}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      return data; 
+    });
+  }
+
+  function subscriptionValidator(email){ //check, is subscription valid(not expired) & are there any subscription to the user
+    return fetch(`http://localhost:8080/api/subscribe/${email}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      return data; 
+    });
+  }
+
   return (
     <div>
         <div className="home-main-container home-main-container-error">
@@ -119,7 +132,7 @@ export default function Login() {
                 {showPassword && <img onClick={visiblePassword} className='passwordToggle passwordToggle3' src='./Assets/showwhite.png'></img>}
                 {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle passwordToggle3' src='./Assets/hidewhite.png'></img>}      
                 {passwordInput && <Form.Control id='inputPassword' className='email-input-login py-3' type={passwordVisible ? 'text' : 'password'} placeholder="Password" />} 
-                {signInBtn && <Button onClick={signin} variant="danger" className='btn-4 signin-btn2 login-btn'>Sign In</Button>}             
+                {signInBtn && <Button onClick={signIn} variant="danger" className='btn-4 signin-btn2 login-btn'>Sign In</Button>}             
                 {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2 login-btn'>Send Sign-In Code</Button>}     
                 <p className='signin-text'>OR</p>
                 {signCodeBtn && <Button variant="light" onClick={useCode} className='text-light btn-4 signin-btn2 signin-btn-code login-btn'>Use a Sign-In Code</Button>}

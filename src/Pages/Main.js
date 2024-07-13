@@ -10,7 +10,7 @@ export default function Main() {
 
   const navigate=useNavigate();
 
-  function getStarted(){ //check, is email already registerd or not
+  function getStarted(){ 
     const userInput=document.getElementById('userEmailInput').value;
     const userInput2=document.getElementById('userEmailInput2').value;
     let Email='';
@@ -21,18 +21,25 @@ export default function Main() {
       Email=userInput2;
     }
     if(Email){
-      fetch(`http://localhost:8080/api/verifyEmail/${Email}`)
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        if (data) {
+      verfyEmail(Email)
+      .then(isValid => {
+        if (isValid) {
           navigate('/signin',{state:{email:Email}});
         } else {
           navigate('/registration',{state:{email:Email}});
         }
-      })
+      });
     }
+  }
+
+  function verfyEmail(email){ //check, is email already registerd or not
+    return fetch(`http://localhost:8080/api/verifyEmail/${email}`)
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      return data; 
+    });
   }
 
   return (

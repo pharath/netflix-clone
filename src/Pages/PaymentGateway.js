@@ -68,7 +68,7 @@ function handlePayment(){
     }
 }
 
-function validateCard(email, cardNumber, cardHoldName, expDate) { // check is card valid(card number & expire date)
+function validateCard(email, cardNumber, cardHoldName, expDate) { // check, is card valid(card number & expire date)
     return fetch('http://localhost:8080/api/payment/card', {
         method: 'POST',
         headers: {

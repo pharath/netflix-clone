@@ -34,8 +34,8 @@ export default function ProfilePicker() {
                 <p className='profile-preview-name'>Add Profile</p>
             </a>
         </div>
-        <a className="manage-profile-btn">
-            <p onClick={showManageProfile} className='manage-profile-btn-text'>Manage Profiles</p>
+        <a onClick={showManageProfile}  className="manage-profile-btn">
+            <p className='manage-profile-btn-text'>Manage Profiles</p>
         </a>
     </div>
   )

@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ProfileManage.css'
+import EditProfile from './EditProfile';
 
 export default function ProfileManage() {
+    const[editProfle,setEditProfile]=useState(false);
     let profileName="My Profile";
+    function showEditProfile(){
+      setEditProfile(true);
+    }
+    function hideEditProfile(){
+      setEditProfile(false);
+    }
   return (
     <div>
-        <div className="profile-preview profile-manage">
-        <div className="profile-preview-overlay"></div>
+        {editProfle && <EditProfile hideEditProfile={hideEditProfile}/>}     
+        <a onClick={showEditProfile}  className="profile-preview profile-manage">
+        <a className="profile-preview-overlay"></a>
             <img className='edit-cover' src='./Assets/edit.png'></img>
             <p className='profile-preview-name'>{profileName}</p>
-        </div>
+        </a>
     </div>
   )
 }

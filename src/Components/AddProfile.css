@@ -35,6 +35,10 @@
     color: #747474;
     cursor: pointer;
 }
+.add-profile-btn2:hover{
+    color: white;
+    border-color: white;
+}
 .add-profile-line{
     color: #747474;
 }

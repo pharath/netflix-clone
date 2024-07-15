@@ -8,9 +8,16 @@ export default function EditProfile({hideEditProfile,email,profileName,profilePi
     const[choosePic,setChoosePic]=useState(false);
     const[deleteProflie,setDeleteProflie]=useState(false);
     const[selectMaturity,setSelectMaturity]=useState(maturity);
+    const [selectLanguage, setSelectLanguage] = useState(language);
+
     const handleMaturityChange = (event) => {
         setSelectMaturity(event.target.value);
     };
+
+    const handleLanguageChange = (event) => {
+        setSelectLanguage(event.target.value);
+    };
+
     function showChoosePic(){
         setChoosePic(true);
     }
@@ -23,27 +30,54 @@ export default function EditProfile({hideEditProfile,email,profileName,profilePi
     function hideDeleteProfile(){
         setDeleteProflie(false);
     }
-
     const[newProfilePicture,setNewProfilePicture]=useState(profilePicture);
 
+    function handleUpdateProfile(){
+        let updateProfileName=document.getElementById('updateName').value;
+        let updateProfilePicture=newProfilePicture;
+        let updateGameHandle=document.getElementById('updateGame').value;
+        let updateLanguage=selectLanguage;
+        let updateMaturity=selectMaturity;
+        if(updateProfileName==''){
+            updateProfileName=profileName;
+        }
+        updateProfile(updateProfileName,updateProfilePicture,updateGameHandle,updateLanguage,updateMaturity);
+    }
+
+    function updateProfile(updateProfileName,updateProfilePicture,updateGameHandle,updateLanguage,updateMaturity){ // update the profile with new values
+        fetch(`http://localhost:8080/api/profile/update/${email}/${profileName}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email:email,
+                profilePicture:updateProfilePicture,
+                profileName:updateProfileName,
+                language:updateLanguage,
+                maturity:updateMaturity,
+                gameHandle:updateGameHandle
+            }),
+        });
+    }
 
   return (
     <div className="expand-Container edit-Container">
         {choosePic &&  <ChoosePic hideChoosePic={hideChoosePic} profilePicture={profilePicture} setNewProfilePicture={setNewProfilePicture}/>}
-        {deleteProflie && <ConfirmDelete hideDeleteProfile={hideDeleteProfile} hideEditProfile={hideEditProfile}/>}
+        {deleteProflie && <ConfirmDelete hideDeleteProfile={hideDeleteProfile} hideEditProfile={hideEditProfile} profileName={profileName} profilePicture={profilePicture}/>}
         <div className="edit-container-inner">
             <p className='cancel-bottom edit-header'>Edit Profile</p>
             <hr className='edit-line'></hr>
             <div className="edit-middle-container">
                 <div className={`edit-middle-left ${newProfilePicture}`}></div>
-                <a onClick={showChoosePic} className="profile-preview-overlay edit-pic-overlay">
+                <a onClick={showChoosePic} className="profile-preview-overlay edit-pic-overlay edit-icon-overlay">
                 <img className='edit-pic' src='./Assets/edit.png'></img>
                 </a>
                 <div className="edit-middle-right">
-                <Form.Control className='add-profile-name edit-profile-name' type="text" placeholder={profileName}/>
+                <Form.Control id='updateName' className='add-profile-name edit-profile-name' type="text" placeholder={profileName}/>
                 <br></br>
                 <p className='cancel-bottom option-heading'>Language:</p><br></br>
-                <Form.Select className='dropmenu' id='languageDropdown' defaultValue={language}>
+                <Form.Select className='dropmenu' id='languageDropdown' defaultValue={language} onChange={handleLanguageChange}>
                     <option value="English">English</option>
                     <option value="Spanish">Español</option>
                     <option value="French">Français</option>
@@ -62,7 +96,7 @@ export default function EditProfile({hideEditProfile,email,profileName,profilePi
                 </Form.Select>
                 <p className='cancel-bottom option-heading'>Game Handle:</p>
                 <p className='cancel-bottom option-sub'>Your handle is a unique name that'll be used for playing with other Netflix members across all Netflix games. <span className='bold'>Learn more</span> </p>
-                <Form.Control className='add-profile-name create-gameHandle' type="text" placeholder={gameHandle? gameHandle: "Create Game Handle"}/>
+                <Form.Control id='updateGame' className='add-profile-name create-gameHandle' type="text" placeholder={gameHandle? gameHandle: "Create Game Handle"}/>
                 <hr className='edit-line edit-line2'></hr>
                 <p className='cancel-bottom option-heading option-heading2'>Maturity Settings:</p>
                 <Form.Select className='dropmenu dropmenu2' id='maturityDropdown' onChange={handleMaturityChange}  defaultValue={maturity}>
@@ -73,13 +107,12 @@ export default function EditProfile({hideEditProfile,email,profileName,profilePi
                     <option value="All Children">All Children</option>
                     <option value="Mature Audience Only">Mature Audience Only</option> 
                 </Form.Select>
-                <p className='cancel-bottom option-sub'>Show titles of <span className='bold4'>{selectMaturity}</span> for this profile. </p>
-                
+                <p className='cancel-bottom option-sub'>Show titles of <span className='bold4'>{selectMaturity}</span> for this profile. </p>       
                 </div>
             </div>
             <hr className='edit-line edit-line3'></hr>
             <div className="btn-container-add">
-                <a onClick={hideEditProfile} className='add-profile-btn2 save-btn-profile'>Save</a>
+                <a onClick={() => {hideEditProfile(); handleUpdateProfile();}} className='add-profile-btn2 save-btn-profile'>Save</a>
                 <a onClick={hideEditProfile} className="add-profile-btn2 edit-profile-btns">Cancel</a>
                 <a onClick={showDeleteProfile} className="add-profile-btn2 edit-profile-btns">Delete Profile</a>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import './ProfilePicker.css'
 import ProfilePreview from './ProfilePreview'
 import AddProfile from './AddProfile'
@@ -7,6 +7,8 @@ import ManageProfile from './ManageProfile';
 export default function ProfilePicker() {
     const[addProfile,setAddProfile]=useState(false);
     const[manageProfile,setManageProfile]=useState(false);
+    const [profiles, setProfiles] = useState([]);
+
     function showAddProfile(){
         setAddProfile(true);
     }
@@ -19,6 +21,24 @@ export default function ProfilePicker() {
     function hideManageProfile(){
         setManageProfile(false);
     }
+    let email="test";
+
+    const fetchProfiles = () => { //Retrive all profiles registerd under the email
+        fetch(`http://localhost:8080/api/profiles/${email}`)
+        .then(response => response.json())
+        .then(data => setProfiles(data));
+    };
+    
+    useEffect(() => {
+        fetchProfiles();
+    }, [email]);
+
+    useEffect(() => {
+        fetchProfiles();
+        const interval = setInterval(fetchProfiles,10); 
+        return () => clearInterval(interval); 
+    }, [email]);
+      
   return (
     <div className='expand-Container'>
         {addProfile && <AddProfile hideAddProfile={hideAddProfile}/>} 
@@ -26,8 +46,12 @@ export default function ProfilePicker() {
         <p className='text-light profile-pick-header'>Who's watching?</p><br></br>
         <div className="profile-container">
             <div className="profile-preview-container">
-                <ProfilePreview/>
-                <ProfilePreview/>
+                {profiles.map(profile => (
+                    <ProfilePreview 
+                        profileName={profile.profileName} 
+                        profilePicture={profile.profilePicture} 
+                    />
+                ))}
             </div>
             <a onClick={showAddProfile} className="add-profile-container">
                 <img className='add-img' src='./Assets/add.png'></img>

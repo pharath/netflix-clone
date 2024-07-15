@@ -7,9 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface userProfileRepo extends JpaRepository<userProfile,Long> {
-    Optional<userProfile> findByEmail(String email);
     Optional<userProfile> findByGameHandle(String gameHandle);
     Optional<userProfile> findByEmailAndProfileName(String email,String profileName);
-    void deleteByEmailAndProfileName(String email, String profileName);
+    void deleteByEmailAndProfileName(String email,String profileName);
     List<userProfile> findAllByEmail(String email);
 }

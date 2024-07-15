@@ -29,7 +29,7 @@ public class userProfileServiceImpl implements userProfileService {
         return userProfileRepository.save(profile);
     }
     @Override
-    public void deleteProfile(String email, String profileName) {
+    public void deleteProfile(String email,String profileName) {
         userProfileRepository.deleteByEmailAndProfileName(email, profileName);
     }
     @Override

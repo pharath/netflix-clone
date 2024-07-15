@@ -26,7 +26,7 @@ public class userProfileController {
     }
     @DeleteMapping("api/profile/delete/{email}/{profileName}")
     public ResponseEntity<String> deleteProfile(@PathVariable("email") String email,@PathVariable("profileName") String profileName){
-        userProfileService.deleteProfile(email,profileName);
+        userProfileService.deleteProfile(email, profileName);
         return new ResponseEntity<String>("profile delete successful!",HttpStatus.OK);
     }
     @PostMapping("api/profile/validate/{email}/{profileName}")

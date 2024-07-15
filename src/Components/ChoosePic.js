@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './ChoosePic.css'
 import ConfirmPic from './ConfirmPic';
 
-export default function ChoosePic({hideChoosePic}) {
+export default function ChoosePic({hideChoosePic,profilePicture,setNewProfilePicture}) {
     const [clickedIcon, setClickedIcon] = useState(null);
     const [confirm, setConfirm] = useState(false);
 
@@ -19,10 +19,9 @@ export default function ChoosePic({hideChoosePic}) {
         setConfirm(false);
     }
 
-
   return (
     <div className='expand-Container'>
-        {confirm && <ConfirmPic hideConfirm={hideConfirm} clickedIcon={clickedIcon} hideChoosePic={hideChoosePic}/>}
+        {confirm && <ConfirmPic hideConfirm={hideConfirm} setNewProfilePicture={setNewProfilePicture} clickedIcon={clickedIcon} hideChoosePic={hideChoosePic} profilePicture={profilePicture}/>}
         <div className="header-strip">
             <a onClick={hideChoosePic} className="back-Icon">
                 <img className='back-i' src='./Assets/back.png'></img>

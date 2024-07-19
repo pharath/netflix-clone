@@ -5,7 +5,7 @@ import ProfilePicker from '../Components/ProfilePicker'
 
 export default function Browse() {
   const[profilePick,setProfilePick]=useState(true);
-  const [selectedProfile, setSelectedProfile] = useState(null);
+  const [selectedProfile, setSelectedProfile] = useState('');
 
   const location = useLocation();
   const email = location.state?.email;
@@ -19,6 +19,12 @@ export default function Browse() {
   return (
     <div>
       {profilePick && <ProfilePicker hideProfilePick={hideProfilePick} setSelectedProfile={setSelectedProfile} email={email}/>}
+      <div className="browse-container">
+       
+      
+
+
+      </div>
     </div>
   )
 }

@@ -28,7 +28,7 @@ export default function ProfilePicker({hideProfilePick,setSelectedProfile,email}
         .then(response => response.json())
         .then(data => setProfiles(data));
     };
-    
+  
     useEffect(() => {
         fetchProfiles();
     }, [email]);
@@ -51,6 +51,8 @@ export default function ProfilePicker({hideProfilePick,setSelectedProfile,email}
                         key={profile.profileName}
                         profileName={profile.profileName} 
                         profilePicture={profile.profilePicture}
+                        hideProfilePick={hideProfilePick}
+                        setSelectedProfile={setSelectedProfile}
                     />
                 ))}
             </div>

@@ -69,7 +69,7 @@ export default function Login() {
                   subscriptionValidator(email)
                   .then(isSubscriptionValid => {
                     if (isSubscriptionValid) {
-                        navigate('/browse');
+                        navigate('/browse',{state:{email:email}});
                     } else {
                         navigate(`/signup/plan`,{state:{email:email}}); 
                     }

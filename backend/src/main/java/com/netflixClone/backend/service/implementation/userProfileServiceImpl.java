@@ -5,6 +5,7 @@ import com.netflixClone.backend.repository.userProfileRepo;
 import com.netflixClone.backend.service.userProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +30,7 @@ public class userProfileServiceImpl implements userProfileService {
         return userProfileRepository.save(profile);
     }
     @Override
+    @Transactional
     public void deleteProfile(String email,String profileName) {
         userProfileRepository.deleteByEmailAndProfileName(email, profileName);
     }

@@ -28,24 +28,42 @@ export default function Signup() {
     }
   
 
-    function userRegister(){ //create account for new user
+    function userRegister(){
         const userInput=document.getElementById('userPasswordInput').value;
         if(userInput==''){
             setBorderColor('red');
         }
         else{
-        fetch(`http://localhost:8080/api/register`,{
+            addUser(email,userInput);
+            createProfile(email);
+            navigate('/signup/plan', {state:{email:email}});
+        }
+    }
+
+    function addUser(email,password){
+        fetch(`http://localhost:8080/api/register`,{ //create new user account
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 email:email,
-                password:userInput
+                password:password
             })
         })
-        navigate('/signup/plan', {state:{email:email}});
-        }
+    }
+
+    function createProfile(email){
+        fetch(`http://localhost:8080/api/profile/add`,{ //create default profile for new user
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email:email,
+                profilePicture:"icon i1"
+            })
+        })
     }
 
   return (

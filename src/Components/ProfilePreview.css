@@ -12,4 +12,5 @@
 }
 .profile-preview:hover{
     color: #e0e0dd;
+    border: solid 3px white;
 }

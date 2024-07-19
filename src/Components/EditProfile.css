@@ -119,6 +119,8 @@
     margin-top: 60%;
     margin-left: 40%;
 }
-.edit-pic-overlay{
+.edit-overlay{
     cursor: pointer;
+    width: 129px;
+    height: 130px;
 }

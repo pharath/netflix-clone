@@ -47,7 +47,6 @@
     align-items: center;
 }
 .profile-pic{
-    background-image: url('./pic-1.png');
     background-size: cover;
     height: 130px;
     width: 130px;

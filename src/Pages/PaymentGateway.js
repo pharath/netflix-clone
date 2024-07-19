@@ -60,7 +60,7 @@ function handlePayment(){
         if (isValid) {
             proceedPayment(packagePrice, email, cardNumber, cardName, cvv, expDate);
             subscribePlan(email, packageName);
-            navigate('/browse');
+            navigate('/browse',{state:{email:email}});
         } else {
             SetCardErrorDisplay(true);
         }

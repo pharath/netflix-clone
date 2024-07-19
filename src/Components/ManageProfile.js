@@ -3,7 +3,7 @@ import './ManageProfile.css'
 import AddProfile from './AddProfile'
 import ProfileManage from './ProfileManage'
 
-export default function ManageProfile({hideManageProfile}) {
+export default function ManageProfile({hideManageProfile,email}) {
     const[addProfile,setAddProfile]=useState(false);
     const [profiles, setProfiles] = useState([]);
 
@@ -13,7 +13,6 @@ export default function ManageProfile({hideManageProfile}) {
     function hideAddProfile(){
         setAddProfile(false);
     }
-    let email="test";
 
     const fetchProfiles = () => { //Retrive all profiles registerd under the email
         fetch(`http://localhost:8080/api/profiles/${email}`)
@@ -31,8 +30,6 @@ export default function ManageProfile({hideManageProfile}) {
         return () => clearInterval(interval); 
     }, [email]);
       
-
-
   return (
     <div className='expand-Container'>
         {addProfile && <AddProfile hideAddProfile={hideAddProfile}/>} 

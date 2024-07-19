@@ -45,7 +45,6 @@ export default function Main() {
 
   return (
     <div>
-      <ProfilePicker/>
       <div className="home-main-container">
           <div className="hero-masterhead">
             <img className='brand-logo' src='/Assets/Netflix-brand.png'></img>

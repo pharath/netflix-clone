@@ -64,13 +64,13 @@ export default function EditProfile({hideEditProfile,email,profileName,profilePi
   return (
     <div className="expand-Container edit-Container">
         {choosePic &&  <ChoosePic hideChoosePic={hideChoosePic} profilePicture={profilePicture} setNewProfilePicture={setNewProfilePicture}/>}
-        {deleteProflie && <ConfirmDelete hideDeleteProfile={hideDeleteProfile} hideEditProfile={hideEditProfile} profileName={profileName} profilePicture={profilePicture}/>}
+        {deleteProflie && <ConfirmDelete hideDeleteProfile={hideDeleteProfile} hideEditProfile={hideEditProfile} profileName={profileName} profilePicture={profilePicture} email={email}/>}
         <div className="edit-container-inner">
             <p className='cancel-bottom edit-header'>Edit Profile</p>
             <hr className='edit-line'></hr>
             <div className="edit-middle-container">
                 <div className={`edit-middle-left ${newProfilePicture}`}></div>
-                <a onClick={showChoosePic} className="profile-preview-overlay edit-pic-overlay edit-icon-overlay">
+                <a onClick={showChoosePic} className="profile-preview-overlay edit-overlay">
                 <img className='edit-pic' src='./Assets/edit.png'></img>
                 </a>
                 <div className="edit-middle-right">

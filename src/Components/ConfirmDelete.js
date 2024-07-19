@@ -1,7 +1,14 @@
 import React from 'react'
 import './ConfirmDelete.css'
 
-export default function ConfirmDelete({hideDeleteProfile,hideEditProfile,profileName,profilePicture}) {
+export default function ConfirmDelete({hideDeleteProfile,hideEditProfile,profileName,profilePicture,email}) {  
+
+    function deleteProfile(){ //delete user profile using email and profileName
+        fetch(`http://localhost:8080/api/profile/delete/${email}/${profileName}`, {
+            method: "DELETE",
+        })
+    }
+
   return (
     <div className='expand-Container'>
         <div className="inner-delete">
@@ -18,7 +25,7 @@ export default function ConfirmDelete({hideDeleteProfile,hideEditProfile,profile
             <hr className='edit-line delete-bottom-line'></hr>
             <div className="btn-container-add">
                 <a onClick={hideDeleteProfile} className='add-profile-btn2 save-btn-profile keepP'>Keep Profile</a>
-                <a onClick={hideEditProfile} className="add-profile-btn2 edit-profile-btns deleteP">Delete Profile</a>
+                <a onClick={() => {hideEditProfile(); deleteProfile();}} className="add-profile-btn2 edit-profile-btns deleteP">Delete Profile</a>
             </div>
         </div>
     </div>

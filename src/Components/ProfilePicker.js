@@ -4,11 +4,10 @@ import ProfilePreview from './ProfilePreview'
 import AddProfile from './AddProfile'
 import ManageProfile from './ManageProfile';
 
-export default function ProfilePicker({hideProfilePick,setSelectedProfile,email}) {
+export default function ProfilePicker({hideProfilePick,setSelectedProfile,email,setProfilesNavBar}) {
     const[addProfile,setAddProfile]=useState(false);
     const[manageProfile,setManageProfile]=useState(false);
     const [profiles, setProfiles] = useState([]);
-
 
     function showAddProfile(){
         setAddProfile(true);
@@ -26,7 +25,10 @@ export default function ProfilePicker({hideProfilePick,setSelectedProfile,email}
     const fetchProfiles = () => { //Retrive all profiles registerd under the email
         fetch(`http://localhost:8080/api/profiles/${email}`)
         .then(response => response.json())
-        .then(data => setProfiles(data));
+        .then(data => {
+            setProfiles(data);
+            setProfilesNavBar(data);
+        })
     };
   
     useEffect(() => {

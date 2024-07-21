@@ -136,8 +136,6 @@ export default function Browse() {
         <div className="carouse-net">
           <div className="carouse-bar">
             <p className="cancel-bottom carouse-title">Now Playing</p></div>
-            <div className="overflow-Hider"></div>
-            <div className="overflow-Hider overflow-Hider2"></div>
             <Swiper
                 slidesPerView={8}
                 spaceBetween={18}
@@ -163,8 +161,6 @@ export default function Browse() {
           <div className="carouse-net">
           <div className="carouse-bar">
             <p className="cancel-bottom carouse-title">Top Rated Movies</p></div>
-            <div className="overflow-Hider"></div>
-            <div className="overflow-Hider overflow-Hider2"></div>
             <Swiper
                 slidesPerView={8}
                 spaceBetween={18}
@@ -190,8 +186,6 @@ export default function Browse() {
           <div className="carouse-net">
           <div className="carouse-bar">
             <p className="cancel-bottom carouse-title">New Releases</p></div>
-            <div className="overflow-Hider"></div>
-            <div className="overflow-Hider overflow-Hider2"></div>
             <Swiper
                 slidesPerView={8}
                 spaceBetween={18}
@@ -217,8 +211,6 @@ export default function Browse() {
           <div className="carouse-net carouse-net2">
           <div className="carouse-bar">
             <p className="cancel-bottom carouse-title">Originals</p></div>
-            <div className="overflow-Hider"></div>
-            <div className="overflow-Hider overflow-Hider2"></div>
             <Swiper
                 slidesPerView={8}
                 spaceBetween={18}

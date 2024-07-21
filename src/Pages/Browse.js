@@ -40,6 +40,50 @@ export default function Browse() {
     setProfilePick(false);
   }
 
+  const[nowPlayingData,setNowPlayingData]=useState([]);
+  const[topRatedData,setTopRatedData]=useState([]);
+  const[newReleasesData,setNewReleasesData]=useState([]);
+  const[originalsData,setOriginalsData]=useState([]);
+
+  useEffect(() => {
+    fetchNowPlaying();
+    fetchTopRated();
+    fetchNewRelease();
+    fetchOrginals();
+  }, []);
+
+  const fetchNowPlaying = () => { //Retrive suggestions for NowPlaying
+    fetch(`http://localhost:8080/api/videoSuggestions/Now Playing`)
+    .then(response => response.json())
+    .then(data => {
+        setNowPlayingData(data);
+    })
+  };
+
+  const fetchTopRated = () => { //Retrive suggestions for TopRated
+    fetch(`http://localhost:8080/api/videoSuggestions/Top Rated Movies`)
+    .then(response => response.json())
+    .then(data => {
+        setTopRatedData(data);
+    })
+  };
+
+  const fetchNewRelease = () => { //Retrive suggestions for NewRelease
+    fetch(`http://localhost:8080/api/videoSuggestions/New Releases`)
+    .then(response => response.json())
+    .then(data => {
+        setNewReleasesData(data);
+    })
+  };
+
+  const fetchOrginals = () => { //Retrive suggestions for Orginals
+    fetch(`http://localhost:8080/api/videoSuggestions/Originals`)
+    .then(response => response.json())
+    .then(data => {
+        setOriginalsData(data);
+    })
+  };
+
   return (
     <div className="browse">
       {profilePick && (
@@ -102,11 +146,17 @@ export default function Browse() {
                 modules={[Navigation]}
                 className="carouse-netflix"
               >
-                {[...Array(12).keys()].map(index => (
+                {nowPlayingData.map((item, index) => (
                   <SwiperSlide key={index} className="video-card-slide">
-                    <VideoCard/>
+                  <VideoCard
+                    videoTitle={item.videoTitle}
+                    videoCategory={item.videoCategory}
+                    videoRating={item.videoRating}
+                    releaseYear={item.releaseYear}
+                    thumbnail={item.thumbnail}
+                  />
                   </SwiperSlide>
-                ))}
+              ))}
               </Swiper>
           </div>
 
@@ -123,11 +173,17 @@ export default function Browse() {
                 modules={[Navigation]}
                 className="carouse-netflix"
               >
-                {[...Array(12).keys()].map(index => (
+                {topRatedData.map((item, index) => (
                   <SwiperSlide key={index} className="video-card-slide">
-                    <VideoCard/>
+                  <VideoCard
+                    videoTitle={item.videoTitle}
+                    videoCategory={item.videoCategory}
+                    videoRating={item.videoRating}
+                    releaseYear={item.releaseYear}
+                    thumbnail={item.thumbnail}
+                  />
                   </SwiperSlide>
-                ))}
+              ))}
               </Swiper>
           </div>
 
@@ -144,11 +200,17 @@ export default function Browse() {
                 modules={[Navigation]}
                 className="carouse-netflix"
               >
-                {[...Array(12).keys()].map(index => (
+                {newReleasesData.map((item, index) => (
                   <SwiperSlide key={index} className="video-card-slide">
-                    <VideoCard/>
+                  <VideoCard
+                    videoTitle={item.videoTitle}
+                    videoCategory={item.videoCategory}
+                    videoRating={item.videoRating}
+                    releaseYear={item.releaseYear}
+                    thumbnail={item.thumbnail}
+                  />
                   </SwiperSlide>
-                ))}
+              ))}
               </Swiper>
           </div>
 
@@ -165,11 +227,17 @@ export default function Browse() {
                 modules={[Navigation]}
                 className="carouse-netflix"
               >
-                {[...Array(12).keys()].map(index => (
+                {originalsData.map((item, index) => (
                   <SwiperSlide key={index} className="video-card-slide">
-                    <VideoCard/>
+                  <VideoCard
+                    videoTitle={item.videoTitle}
+                    videoCategory={item.videoCategory}
+                    videoRating={item.videoRating}
+                    releaseYear={item.releaseYear}
+                    thumbnail={item.thumbnail}
+                  />
                   </SwiperSlide>
-                ))}
+              ))}
               </Swiper>
           </div>
           <div className="home-footer2 text-light">

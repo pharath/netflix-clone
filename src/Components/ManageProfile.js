@@ -32,7 +32,7 @@ export default function ManageProfile({hideManageProfile,email}) {
       
   return (
     <div className='expand-Container'>
-        {addProfile && <AddProfile hideAddProfile={hideAddProfile}/>} 
+        {addProfile && <AddProfile hideAddProfile={hideAddProfile} email={email}/>} 
         <p className='text-light profile-pick-header'>Manage Profile:</p><br></br>
         <div className="profile-container">
             <div className="profile-preview-container">

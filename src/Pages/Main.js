@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Accordion from 'react-bootstrap/Accordion';
 import { useNavigate } from 'react-router-dom';
 import GlobalFooter2 from '../Components/Globalfooter2';
-import ProfilePicker from '../Components/ProfilePicker';
+
 
 export default function Main() {
 

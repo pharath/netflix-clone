@@ -9,7 +9,7 @@ import { Navigation} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import GlobalFooter2 from '../Components/Globalfooter2';
+
 
 export default function Browse() {
   const [profilePick, setProfilePick] = useState(true);

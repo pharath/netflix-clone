@@ -181,3 +181,13 @@ h4,h5{
     position: absolute;
     z-index: 9999;
 }
+.email-required{
+    position: absolute;
+    margin-bottom: -18%;
+    margin-left: -36.5%;
+}
+.email-required2{
+    position: absolute;
+    margin-bottom: -46%;
+    margin-left: -35%;
+}

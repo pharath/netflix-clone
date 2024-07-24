@@ -9,6 +9,8 @@ import { Navigation} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Addtolist from '../Components/Addtolist';
+import Removefromlist from '../Components/Removefromlist';
 
 
 export default function Browse() {
@@ -123,9 +125,7 @@ export default function Browse() {
               <div className="info-btn">
                 <i className="bi bi-info-circle info-btn-icon"></i>More Info
               </div>
-              <div className="circle-btn">
-                <i className="bi bi-plus-lg"></i>
-              </div>
+              <Addtolist/>
               <div className="circle-btn">
                 <i className="bi bi-hand-thumbs-up"></i>
               </div>

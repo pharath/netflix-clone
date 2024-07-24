@@ -9,17 +9,46 @@ import GlobalFooter2 from '../Components/Globalfooter2';
 
 export default function Main() {
 
+  const[emailReq1,setEmailReq1]=useState(false);
+  const[emailReq2,setEmailReq2]=useState(false);
+  const [borderColor, setBorderColor] = useState('');
+  const [borderColor2, setBorderColor2] = useState('');
   const navigate=useNavigate();
 
+  function showEmailReq1(){
+    setEmailReq1(true);
+    setBorderColor('red');
+  }
+  function showEmailReq2(){
+    setEmailReq2(true);
+    setBorderColor2('red');
+  }
+  function hideEmailReq1(){
+    setEmailReq1(false);
+    setBorderColor('');
+  }
+  function hideEmailReq2(){
+    setEmailReq2(false);
+    setBorderColor2('');
+  }
   function getStarted(){ 
     const userInput=document.getElementById('userEmailInput').value;
     const userInput2=document.getElementById('userEmailInput2').value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     let Email='';
     if(userInput){
-      Email=userInput;
+      if(emailPattern.test(userInput)){
+        Email=userInput;
+      }else{
+        showEmailReq1();
+      }
     }
     if(userInput2){
-      Email=userInput2;
+      if(emailPattern.test(userInput2)){
+        Email=userInput2;
+      }else{
+        showEmailReq1();
+      }
     }
     if(Email){
       verfyEmail(Email)
@@ -55,10 +84,11 @@ export default function Main() {
           <h4>Ready to watch? Enter your email to create or restart your membership.</h4>
           <div className="form-container">
             <Form className='email-input-container'>
-              <Form.Control id="userEmailInput" className='email-input py-3' type="email" placeholder="Email Address" />
+              <Form.Control id="userEmailInput" className='email-input py-3' type="email" placeholder="Email Address"  style={{ borderColor: borderColor }}/>
             </Form>
             <Button onClick={getStarted} className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
-          </div>     
+          </div> 
+          {emailReq1 && <div className="profile-name-validate profile-name-notvalidate email-required"><i class="bi bi-x-circle-fill"></i> Email is required.</div> }      
       </div>
       <div className="home-main-shadow"></div>
       <div className="home-main-hero"></div> 
@@ -149,10 +179,11 @@ export default function Main() {
         <h4 className='text-light'>Ready to watch? Enter your email to create or restart your membership.</h4>
           <div className="form-container2">
             <Form className='email-input-container'>
-              <Form.Control id="userEmailInput2" className='email-input py-3' type="email" placeholder="Email Address" />
+              <Form.Control id="userEmailInput2" className='email-input py-3' type="email" placeholder="Email Address"  style={{ borderColor: borderColor2 }}/>
             </Form>
             <Button onClick={getStarted} className='text-light fw-bold btn-2 btn-3' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div> 
+          {emailReq2 && <div className="profile-name-validate profile-name-notvalidate email-required2"><i class="bi bi-x-circle-fill"></i> Email is required.</div> }  
       </div> 
       <GlobalFooter2/>
     </div>

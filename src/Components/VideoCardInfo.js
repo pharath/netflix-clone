@@ -1,13 +1,15 @@
 import React from 'react'
 import './VideoCardInfo.css'
+import Addtolist from './Addtolist'
 
 export default function VideoCardInfo({videoTitle,videoCategory,videoRating,releaseYear,thumbnail}) {
+  const placement="hoverTextUp";
   return (
     <div className='VideoCardInfo-Card'>
         <div className={`preview-img ${thumbnail}`}></div>
         <div className="btn-container-card">
         <div className="circle-btn circle-btn2 circle-btn2-play"><i class="bi bi-play-fill"></i></div>
-        <div className="circle-btn circle-btn2"><i className="bi bi-plus-lg"></i></div>
+        <Addtolist placement={placement}/>
         <div className="circle-btn circle-btn2"><i class="bi bi-hand-thumbs-up"></i></div><div className="space-div"></div>
         <div className="circle-btn circle-btn2"><i class="bi bi-chevron-down"></i></div>
         </div>

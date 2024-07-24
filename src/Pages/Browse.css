@@ -161,3 +161,22 @@
 .carouse-net2{
     margin-bottom: 2%;
 }
+.hoverText{
+    margin-top: 13%;
+    background-color: white;
+    color: black;
+    position: absolute;
+    font-size: 85%;
+    font-weight: 600;
+    padding: 0.5% 2%;
+    display: none;
+}
+.list-hover:hover .hoverText {
+    display: block;
+}
+.list-action{
+    color: white;
+}
+.hoverTextUp{
+    margin-top: -25%;
+}

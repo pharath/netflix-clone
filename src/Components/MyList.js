@@ -6,7 +6,7 @@ export default function MyList() {
   return (
     <div className='myListContainer'>
         <div className="myList-inner">
-          <p className='text-light add-profile-header cancel-bottom'>My List</p><br></br><br></br>
+          <p className='text-light add-profile-header cancel-bottom myListHeading'>My List</p><br></br><br></br>
           <div className="divider"></div>
           <MyListPreview/>
           <MyListPreview/>

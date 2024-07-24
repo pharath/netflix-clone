@@ -11,12 +11,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Addtolist from '../Components/Addtolist';
 import Removefromlist from '../Components/Removefromlist';
+import MyList from '../Components/MyList';
 
 
 export default function Browse() {
   const [profilePick, setProfilePick] = useState(true);
   const [selectedProfile, setSelectedProfile] = useState('');
   const [profilesNavBar, setProfilesNavBar] = useState([]);
+  const[myList,setMyList]=useState(false);
 
   const location = useLocation();
   const email = location.state?.email;
@@ -41,7 +43,12 @@ export default function Browse() {
   function hideProfilePick() {
     setProfilePick(false);
   }
-
+  function showMyList(){
+    setMyList(true);
+  }
+  function hideMyList(){
+    setMyList(false);
+  }
   const[nowPlayingData,setNowPlayingData]=useState([]);
   const[topRatedData,setTopRatedData]=useState([]);
   const[newReleasesData,setNewReleasesData]=useState([]);
@@ -102,7 +109,10 @@ export default function Browse() {
           showProfilePick={showProfilePick}
           profilesNavBar={profilesNavBar}
           setSelectedProfile={setSelectedProfile}
+          showMyList={showMyList}
+          hideMyList={hideMyList}
         />
+        {myList && <MyList/>}
         <div className="main-hero-playback">
           <video
             src="./Assets/video-preview.mp4"

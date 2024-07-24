@@ -5,16 +5,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropDownProfile from './DropDownProfile';
+import { useNavigate } from 'react-router-dom';
 
-export default function BrowserNav({selectedProfile,showProfilePick,profilesNavBar,setSelectedProfile}) {
+export default function BrowserNav({selectedProfile,showProfilePick,profilesNavBar,setSelectedProfile,showMyList,hideMyList}) {
     const [showDropdown, setShowDropdown] = useState(false);
+    const navigate=useNavigate();
     const handleDropdownToggle = (isOpen) => {
         setShowDropdown(isOpen);
       };
-    
       const closeDropdown = () => {
         setShowDropdown(false);
       };
+
   return (
     <div>
     <Navbar className='nav-bar' variant='dark'>
@@ -23,11 +25,11 @@ export default function BrowserNav({selectedProfile,showProfilePick,profilesNavB
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link className='tab-navBar' >Home</Nav.Link>
-          <Nav.Link className='tab-navBar' >TV Show</Nav.Link>
-          <Nav.Link className='tab-navBar' >Movies</Nav.Link>
-          <Nav.Link className='tab-navBar' >New & Popular</Nav.Link>
-          <Nav.Link className='tab-navBar' >My List</Nav.Link>
+          <Nav.Link onClick={hideMyList} className='tab-navBar' >Home</Nav.Link>
+          <Nav.Link onClick={hideMyList} className='tab-navBar' >TV Show</Nav.Link>
+          <Nav.Link onClick={hideMyList} className='tab-navBar' >Movies</Nav.Link>
+          <Nav.Link onClick={hideMyList} className='tab-navBar' >New & Popular</Nav.Link>
+          <Nav.Link onClick={showMyList} className='tab-navBar' >My List</Nav.Link>
         </Nav>
         <Nav className='right-nav'>
           <Nav.Link className='right-btn-nav tab-navBar'><i class="bi bi-search"></i>&nbsp;&nbsp;&nbsp;</Nav.Link>

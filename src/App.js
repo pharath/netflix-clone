@@ -14,6 +14,7 @@ import Logout from './Pages/Logout';
 import Browse from './Pages/Browse';
 
 
+
 function App() {
   return (
     <div className="App">
@@ -30,7 +31,7 @@ function App() {
           <Route path='/signup' element={<Regform/>}></Route>
           <Route path='/signup/plan' element={<Planwelcome/>}></Route>
           <Route path='/signup/logout' element={<Logout/>}></Route>
-          <Route path='/browse' element={<Browse/>}></Route>
+          <Route path='/browse' element={<Browse/>}></Route>         
         </Routes>
       </BrowserRouter>    
     </div>

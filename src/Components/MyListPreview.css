@@ -29,10 +29,12 @@
     font-weight: 600;
 }
 .div2{
-    margin-left: 23%;
+    margin-left: 40%;
+    position: absolute;
 }
 .div3{
-    margin-left: 3%;
+    margin-left: 45%;
+    position: absolute;
 }
 .div4{
     margin-left: 75%;

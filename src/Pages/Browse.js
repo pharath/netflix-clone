@@ -17,6 +17,7 @@ import MyList from '../Components/MyList';
 export default function Browse() {
   const [profilePick, setProfilePick] = useState(true);
   const [selectedProfile, setSelectedProfile] = useState('');
+  const [selectedProfileName, setSelectedProfileName] = useState('');
   const [profilesNavBar, setProfilesNavBar] = useState([]);
   const[myList,setMyList]=useState(false);
 
@@ -101,6 +102,7 @@ export default function Browse() {
           setSelectedProfile={setSelectedProfile}
           email={email}
           setProfilesNavBar={setProfilesNavBar}
+          setSelectedProfileName={setSelectedProfileName}
         />
       )}
       <div className="browse-container">
@@ -111,8 +113,9 @@ export default function Browse() {
           setSelectedProfile={setSelectedProfile}
           showMyList={showMyList}
           hideMyList={hideMyList}
+          setSelectedProfileName={setSelectedProfileName}
         />
-        {myList && <MyList/>}
+        {myList && <MyList email={email} selectedProfileName={selectedProfileName}/>} 
         <div className="main-hero-playback">
           <video
             src="./Assets/video-preview.mp4"
@@ -135,7 +138,7 @@ export default function Browse() {
               <div className="info-btn">
                 <i className="bi bi-info-circle info-btn-icon"></i>More Info
               </div>
-              <Addtolist/>
+              <Addtolist email={email} selectedProfileName={selectedProfileName} videoTitle={"Saw X"} videoCategory={"Horror - Crime"} releaseYear={"2023"} thumbnail={"saw_x_thumbnail"}/>
               <div className="circle-btn">
                 <i className="bi bi-hand-thumbs-up"></i>
               </div>
@@ -162,6 +165,8 @@ export default function Browse() {
                     videoRating={item.videoRating}
                     releaseYear={item.releaseYear}
                     thumbnail={item.thumbnail}
+                    email={email} 
+                    selectedProfileName={selectedProfileName}
                   />
                   </SwiperSlide>
               ))}
@@ -187,6 +192,8 @@ export default function Browse() {
                     videoRating={item.videoRating}
                     releaseYear={item.releaseYear}
                     thumbnail={item.thumbnail}
+                    email={email} 
+                    selectedProfileName={selectedProfileName}
                   />
                   </SwiperSlide>
               ))}
@@ -212,6 +219,8 @@ export default function Browse() {
                     videoRating={item.videoRating}
                     releaseYear={item.releaseYear}
                     thumbnail={item.thumbnail}
+                    email={email} 
+                    selectedProfileName={selectedProfileName}
                   />
                   </SwiperSlide>
               ))}
@@ -237,6 +246,8 @@ export default function Browse() {
                     videoRating={item.videoRating}
                     releaseYear={item.releaseYear}
                     thumbnail={item.thumbnail}
+                    email={email} 
+                    selectedProfileName={selectedProfileName}
                   />
                   </SwiperSlide>
               ))}

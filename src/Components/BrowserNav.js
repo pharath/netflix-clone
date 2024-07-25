@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropDownProfile from './DropDownProfile';
 import { useNavigate } from 'react-router-dom';
 
-export default function BrowserNav({selectedProfile,showProfilePick,profilesNavBar,setSelectedProfile,showMyList,hideMyList}) {
+export default function BrowserNav({selectedProfile,showProfilePick,profilesNavBar,setSelectedProfile,showMyList,hideMyList,setSelectedProfileName}) {
     const [showDropdown, setShowDropdown] = useState(false);
     const navigate=useNavigate();
     const handleDropdownToggle = (isOpen) => {
@@ -41,6 +41,7 @@ export default function BrowserNav({selectedProfile,showProfilePick,profilesNavB
                         profileName={profile.profileName} 
                         profilePicture={profile.profilePicture}
                         setSelectedProfile={setSelectedProfile}
+                        setSelectedProfileName={setSelectedProfileName}
                         closeDropdown={closeDropdown}
                     />
             ))}

@@ -4,7 +4,7 @@ import ProfilePreview from './ProfilePreview'
 import AddProfile from './AddProfile'
 import ManageProfile from './ManageProfile';
 
-export default function ProfilePicker({hideProfilePick,setSelectedProfile,email,setProfilesNavBar}) {
+export default function ProfilePicker({hideProfilePick,setSelectedProfile,setSelectedProfileName,email,setProfilesNavBar}) {
     const[addProfile,setAddProfile]=useState(false);
     const[manageProfile,setManageProfile]=useState(false);
     const [profiles, setProfiles] = useState([]);
@@ -55,6 +55,7 @@ export default function ProfilePicker({hideProfilePick,setSelectedProfile,email,
                         profilePicture={profile.profilePicture}
                         hideProfilePick={hideProfilePick}
                         setSelectedProfile={setSelectedProfile}
+                        setSelectedProfileName={setSelectedProfileName}
                     />
                 ))}
             </div>

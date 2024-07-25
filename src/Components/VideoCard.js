@@ -3,7 +3,7 @@ import './VideoCard.css';
 import VideoCardInfo from './VideoCardInfo';
 import './VideoThumbnails.css'
 
-export default function VideoCard({videoTitle,videoCategory,videoRating,releaseYear,thumbnail}) {
+export default function VideoCard({videoTitle,videoCategory,videoRating,releaseYear,thumbnail,email,selectedProfileName}) {
   const [showInfo, setShowInfo] = useState(false);
   const [timer, setTimer] = useState(null);
 
@@ -24,7 +24,7 @@ export default function VideoCard({videoTitle,videoCategory,videoRating,releaseY
   };
   return (
     <div className={`vCard-Container ${thumbnail}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      {showInfo && <VideoCardInfo thumbnail={thumbnail} videoTitle={videoTitle} videoCategory={videoCategory} videoRating={videoRating} releaseYear={releaseYear}/>}
+      {showInfo && <VideoCardInfo selectedProfileName={selectedProfileName} email={email} thumbnail={thumbnail} videoTitle={videoTitle} videoCategory={videoCategory} videoRating={videoRating} releaseYear={releaseYear}/>}
     </div>
   );
 }

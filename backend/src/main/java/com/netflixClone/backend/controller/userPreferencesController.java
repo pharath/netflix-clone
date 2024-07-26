@@ -26,7 +26,7 @@ public class userPreferencesController {
     @DeleteMapping("api/list/delete/{email}/{profileName}/{videoTitle}")
     public ResponseEntity<String> deleteFromList(@PathVariable ("email") String email,@PathVariable ("profileName") String profileName,@PathVariable ("videoTitle") String videoTitle){
         preferencesService.removeFromList(email, profileName, videoTitle);
-        return new ResponseEntity<String>("video removed from list!",HttpStatus.OK);
+        return new ResponseEntity<String>("removed from list!",HttpStatus.OK);
     }
     @GetMapping("api/list/check/{email}/{profileName}/{videoTitle}")
     public ResponseEntity<Boolean> checkInList(@PathVariable("email") String email,@PathVariable("profileName") String profileName,@PathVariable("videoTitle") String videoTitle){

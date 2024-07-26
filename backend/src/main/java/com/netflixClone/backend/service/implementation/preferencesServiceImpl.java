@@ -5,6 +5,7 @@ import com.netflixClone.backend.repository.preferencesRepo;
 import com.netflixClone.backend.service.preferencesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,10 +20,10 @@ public class preferencesServiceImpl implements preferencesService {
     public List<userVideoList> getAllInList(String email, String profileName) {
         return preferencesRepository.findAllByEmailAndProfileName(email, profileName);
     }
+    @Transactional
     public void removeFromList(String email, String profileName, String videoTitle) {
         preferencesRepository.deleteByEmailAndProfileNameAndVideoTitle(email,profileName,videoTitle);
     }
-
     public boolean checkInList(String email, String profileName, String videoTitle) {
         Optional<userVideoList> inList=preferencesRepository.findByEmailAndProfileNameAndVideoTitle(email, profileName, videoTitle);
         return !inList.isPresent();

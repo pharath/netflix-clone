@@ -20,7 +20,8 @@ export default function Browse() {
   const [selectedProfileName, setSelectedProfileName] = useState('');
   const [profilesNavBar, setProfilesNavBar] = useState([]);
   const[myList,setMyList]=useState(false);
-
+  const [isInList, setIsInList] = useState(false);
+  const masterVideo="Saw X";
 
   const location = useLocation();
   const email = location.state?.email;
@@ -139,7 +140,10 @@ export default function Browse() {
               <div className="info-btn">
                 <i className="bi bi-info-circle info-btn-icon"></i>More Info
               </div>
-              <Addtolist email={email} selectedProfileName={selectedProfileName} videoTitle={"Saw X"} videoCategory={"Horror - Crime"} releaseYear={"2023"} thumbnail={"saw_x_thumbnail"}/>
+              {isInList 
+               ? <Removefromlist email={email} selectedProfileName={selectedProfileName} videoTitle={masterVideo}/>
+               : <Addtolist email={email} selectedProfileName={selectedProfileName} videoTitle={masterVideo} videoCategory={"Horror - Crime"} releaseYear={"2023"} thumbnail={"saw_x_thumbnail"}/>
+              }
               <div className="circle-btn">
                 <i className="bi bi-hand-thumbs-up"></i>
               </div>

@@ -24,6 +24,10 @@ public class preferencesServiceImpl implements preferencesService {
     public void removeFromList(String email, String profileName, String videoTitle) {
         preferencesRepository.deleteByEmailAndProfileNameAndVideoTitle(email,profileName,videoTitle);
     }
+    @Transactional
+    public void removeProfile(String email, String profileName) {
+        preferencesRepository.deleteByEmailAndProfileName(email, profileName);
+    }
     public boolean checkInList(String email, String profileName, String videoTitle) {
         Optional<userVideoList> inList=preferencesRepository.findByEmailAndProfileNameAndVideoTitle(email, profileName, videoTitle);
         return !inList.isPresent();

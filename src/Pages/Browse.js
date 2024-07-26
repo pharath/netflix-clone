@@ -21,6 +21,7 @@ export default function Browse() {
   const [profilesNavBar, setProfilesNavBar] = useState([]);
   const[myList,setMyList]=useState(false);
 
+
   const location = useLocation();
   const email = location.state?.email;
 
@@ -144,9 +145,9 @@ export default function Browse() {
               </div>
             </div>
           </div>
+          {!myList &&
           <div className="main-hero">
-
-        <div className="carouse-net">
+          <div className="carouse-net">
           <div className="carouse-bar">
             <p className="cancel-bottom carouse-title">Now Playing</p></div>
             <Swiper
@@ -257,7 +258,7 @@ export default function Browse() {
             <h6>© 2024 NetflixClone. All rights reserved.&nbsp;By Group 20 - COSC 31093</h6> 
             <h7>This is a demo project and is not affiliated with or endorsed by Netflix. All content, logos, and trademarks are property of their respective owners.</h7>
           </div>
-          </div>
+          </div>}
         </div>
       </div>
     </div>

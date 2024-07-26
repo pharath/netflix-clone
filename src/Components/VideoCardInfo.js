@@ -27,7 +27,7 @@ export default function VideoCardInfo({ email, selectedProfileName, videoTitle, 
       <div className="btn-container-card">
         <div className="circle-btn circle-btn2 circle-btn2-play"><i className="bi bi-play-fill"></i></div>
         {!isInList 
-          ? <Removefromlist email={email} selectedProfileName={selectedProfileName} videoTitle={videoTitle} />
+          ? <Removefromlist email={email} selectedProfileName={selectedProfileName} videoTitle={videoTitle} placement={placement}/>
           : <Addtolist selectedProfileName={selectedProfileName} email={email} thumbnail={thumbnail} releaseYear={releaseYear} videoTitle={videoTitle} videoCategory={videoCategory} placement={placement} />
         }
         <div className="circle-btn circle-btn2"><i className="bi bi-hand-thumbs-up"></i></div>

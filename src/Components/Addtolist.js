@@ -16,7 +16,7 @@ export default function Addtolist({email,selectedProfileName,placement,videoTitl
       addToList(videoData);
   };
 
-  function addToList(videoData) {
+  function addToList(videoData) { //add video from 'MyList'
       fetch(`http://localhost:8080/api/list/add`, {
           method: 'POST',
           headers: {

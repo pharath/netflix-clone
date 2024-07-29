@@ -1,5 +1,5 @@
 import React from 'react'
-import './PaymentPicker.css'
+import './Styles/PaymentPicker.css'
 import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
 import { useLocation } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './PaymentGateway.css'
+import './Styles/PaymentGateway.css'
 import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
 import Form from 'react-bootstrap/Form';
@@ -31,10 +31,10 @@ const[amexCard,setAmexCard]=useState(false);
 const[cardErrorDisplay,SetCardErrorDisplay]=useState(false);
 
 function handlePayment(){ 
-   let cardName=document.getElementById('cardName').value;
-   let cardNumber=document.getElementById('cardNumber').value;
-   let cvv=document.getElementById('cvv').value;
-   let expDate=document.getElementById('expDate').value;
+   let cardName=document.getElementById('cc-name').value;
+   let cardNumber=document.getElementById('cc-number').value;
+   let cvv=document.getElementById('cc-csc').value;
+   let expDate=document.getElementById('cc-exp').value;
    let packageName=selectedCard;
    
    const validateField = (value, setBorderColor, setValidity) => {
@@ -235,7 +235,7 @@ const identifyCardType = (number) => {
                 </div>
                 <Form>
                     <div className="input-sections">
-                        <Form.Control id='cardNumber' className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19" style={{ borderColor: cnumborderColor }}/>
+                        <Form.Control id='cc-number' className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19" style={{ borderColor: cnumborderColor }} autoComplete="cc-number"/>
                         {defaultCard && <img className='input-icon ' src='/Assets/input-cardno.png'></img>}
                         {visaCard && <img className='input-icon input-icon5' src='/Assets/visa.png'></img>}
                         {masterCard && <img className='input-icon input-icon5' src='/Assets/master.png'></img>}
@@ -243,8 +243,8 @@ const identifyCardType = (number) => {
                     </div>
                     {iscardnumbervalid && <div className="fill-error">Please enter a card number.</div>}                
                     <div className="input-sections2">
-                        <Form.Control id='expDate' className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" style={{ borderColor: edborderColor }}/>
-                        <Form.Control id='cvv' className='credit-input' type="password" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }}/>
+                        <Form.Control id='cc-exp' className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" style={{ borderColor: edborderColor }} autoComplete="cc-exp" />
+                        <Form.Control id='cc-csc' className='credit-input' type="password" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }}  autoComplete="cc-csc"/>
                         <img className='input-icon-cvv' src='/Assets/input-cvv.png'></img>
                     </div>
                     <div className="fill-error-conatiner">
@@ -256,10 +256,9 @@ const identifyCardType = (number) => {
                         </div>                         
                     </div>                   
                     <div className="input-sections">
-                        <Form.Control id='cardName' className='credit-input' type="text" placeholder="Name on card" style={{ borderColor: cnameborderColor }}/>
+                        <Form.Control id='cc-name' className='credit-input' type="text" placeholder="Name on card" style={{ borderColor: cnameborderColor }} autoComplete="cc-name"/>
                     </div>
-                    {iscardnamevalid && <div className="fill-error">Name is required.</div>} 
-                    
+                    {iscardnamevalid && <div className="fill-error">Name is required.</div>}                     
                 </Form>
                 <div className="package-info">
                     <p className='package-price'>USD <span>{packagePrice}</span>/month</p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Registration.css'
+import './Styles/Registration.css'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Masterhead from '../Components/Masterhead'

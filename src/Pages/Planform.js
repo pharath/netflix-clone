@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Planform.css'
+import './Styles/Planform.css'
 import Masterhead from '../Components/Masterhead'
 import Globalfooter from '../Components/Globalfooter'
 import PlanCard from '../Components/PlanCard'

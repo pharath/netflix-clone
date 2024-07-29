@@ -96,7 +96,7 @@ export default function EditProfile({hideEditProfile,email,profileName,profilePi
         }
     }
 
-    function updateProfile(updateProfileName,updateProfilePicture,updateGameHandle,updateLanguage,updateMaturity){ // update the profile with new values
+    function updateProfile(updateProfileName,updateProfilePicture,updateGameHandle,updateLanguage,updateMaturity){ // update the profile and myList with new data
         fetch(`http://localhost:8080/api/profile/update/${email}/${profileName}`, {
             method: 'PUT',
             headers: {

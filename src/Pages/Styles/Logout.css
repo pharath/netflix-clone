@@ -1,5 +1,5 @@
 .logout-container{
-    background-image: url('./logout.jpg');
+    background-image: url('../logout.jpg');
     background-size: cover;
 }
 .inner-box-error{

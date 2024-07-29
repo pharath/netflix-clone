@@ -1,7 +1,7 @@
 .home-main-hero,.home-main-shadow{
     width: 100%;
     height: 100vh;
-    background-image: url('./signUp.jpg');
+    background-image: url('../signUp.jpg');
 }
 .home-main-shadow{
     background-image: none;

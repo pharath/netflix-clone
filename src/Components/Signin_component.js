@@ -87,7 +87,7 @@ return (
       <Form>
           {showPassword && <img onClick={visiblePassword} className='passwordToggle' src='./Assets/show.png'></img>}
           {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle' src='./Assets/hide.png'></img>}
-          <Form.Control id='userPasswordInput' className='password-input' type={passwordVisible ? 'text' : 'password'} placeholder="Enter your password" style={{ borderColor: borderColor }}/>
+          <Form.Control autoComplete="current-password" id='userPasswordInput' className='password-input' type={passwordVisible ? 'text' : 'password'} placeholder="Enter your password" style={{ borderColor: borderColor }}/>
       </Form><br></br>
       <Button onClick={signIn} variant="danger" className='btn-4'>Next</Button>
     </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Logout.css'
+import './Styles/Logout.css'
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';

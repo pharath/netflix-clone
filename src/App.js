@@ -13,8 +13,6 @@ import PaymentGateway from './Pages/PaymentGateway';
 import Logout from './Pages/Logout';
 import Browse from './Pages/Browse';
 
-
-
 function App() {
   return (
     <div className="App">

@@ -233,9 +233,9 @@ const identifyCardType = (number) => {
                     <img src='/Assets/master.png'></img>
                     <img src='/Assets/amex.png'></img>
                 </div>
-                <Form>
+            <Form>
                     <div className="input-sections">
-                        <Form.Control id='cc-number' className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19" style={{ borderColor: cnumborderColor }} autoComplete="cc-number"/>
+                        <Form.Control  autoComplete="cc-number" id='cc-number' className='credit-input' type="text" placeholder="Card number" value={cardNumber} onChange={handleCardNumberChange} onKeyDown={handleCardNumberKeyDown} maxLength="19" style={{ borderColor: cnumborderColor }}/>
                         {defaultCard && <img className='input-icon ' src='/Assets/input-cardno.png'></img>}
                         {visaCard && <img className='input-icon input-icon5' src='/Assets/visa.png'></img>}
                         {masterCard && <img className='input-icon input-icon5' src='/Assets/master.png'></img>}
@@ -243,8 +243,8 @@ const identifyCardType = (number) => {
                     </div>
                     {iscardnumbervalid && <div className="fill-error">Please enter a card number.</div>}                
                     <div className="input-sections2">
-                        <Form.Control id='cc-exp' className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" style={{ borderColor: edborderColor }} autoComplete="cc-exp" />
-                        <Form.Control id='cc-csc' className='credit-input' type="password" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }}  autoComplete="cc-csc"/>
+                        <Form.Control autoComplete="cc-exp" id='cc-exp' className='credit-input' type="text" value={value} onChange={handleChange} onKeyDown={handleKeyDown} placeholder={placeholder} onFocus={handleFocus} onBlur={handleBlur} maxLength="5" style={{ borderColor: edborderColor }}/>
+                        <Form.Control autoComplete="cc-csc" id='cc-csc' className='credit-input' type="password" placeholder="CVV" value={cvv} onChange={handleCvvChange} maxLength="3"style={{ borderColor: cvvborderColor }} />
                         <img className='input-icon-cvv' src='/Assets/input-cvv.png'></img>
                     </div>
                     <div className="fill-error-conatiner">
@@ -256,7 +256,7 @@ const identifyCardType = (number) => {
                         </div>                         
                     </div>                   
                     <div className="input-sections">
-                        <Form.Control id='cc-name' className='credit-input' type="text" placeholder="Name on card" style={{ borderColor: cnameborderColor }} autoComplete="cc-name"/>
+                        <Form.Control autoComplete="cc-name" id='cc-name' className='credit-input' type="text" placeholder="Name on card" style={{ borderColor: cnameborderColor }}/>
                     </div>
                     {iscardnamevalid && <div className="fill-error">Name is required.</div>}                     
                 </Form>

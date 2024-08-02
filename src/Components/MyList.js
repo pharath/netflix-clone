@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './MyList.css';
+import './Styles/MyList.css';
 import MyListPreview from './MyListPreview';
 
 export default function MyList({ email, selectedProfileName }) {

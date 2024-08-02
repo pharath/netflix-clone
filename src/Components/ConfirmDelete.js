@@ -1,5 +1,5 @@
 import React from 'react'
-import './ConfirmDelete.css'
+import './Styles/ConfirmDelete.css'
 
 export default function ConfirmDelete({hideDeleteProfile,hideEditProfile,profileName,profilePicture,email}) {  
 

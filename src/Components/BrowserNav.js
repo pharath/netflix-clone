@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import './BrowserNav.css'
+import './Styles/BrowserNav.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import DropDownProfile from './DropDownProfile';
-import { useNavigate } from 'react-router-dom';
 
 export default function BrowserNav({selectedProfile,showProfilePick,profilesNavBar,setSelectedProfile,showMyList,hideMyList,setSelectedProfileName}) {
     const [showDropdown, setShowDropdown] = useState(false);
-    const navigate=useNavigate();
     const handleDropdownToggle = (isOpen) => {
         setShowDropdown(isOpen);
       };

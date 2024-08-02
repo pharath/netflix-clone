@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './VideoCardInfo.css';
+import './Styles/VideoCardInfo.css';
 import Addtolist from './Addtolist';
 import Removefromlist from './Removefromlist';
 

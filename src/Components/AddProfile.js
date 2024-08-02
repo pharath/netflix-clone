@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AddProfile.css'
+import './Styles/AddProfile.css'
 import Form from 'react-bootstrap/Form';
 
 export default function AddProfile({hideAddProfile,email}) {

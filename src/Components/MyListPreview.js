@@ -1,5 +1,5 @@
 import React from 'react'
-import './MyListPreview.css'
+import './Styles/MyListPreview.css'
 
 export default function MyListPreview({email,selectedProfileName,videoTitle,videoCategory,releaseYear,thumbnail}) {
 

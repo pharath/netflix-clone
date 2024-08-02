@@ -26,7 +26,6 @@ export default function Addtolist({email,selectedProfileName,placement,videoTitl
       })
   }
 
-
   return (
     <div className="circle-btn list-hover" onClick={handleClick}>
         <i className="bi bi-plus-lg list-action"></i>

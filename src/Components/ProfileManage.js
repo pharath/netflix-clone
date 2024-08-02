@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './ProfileManage.css'
+import './Styles/ProfileManage.css'
 import EditProfile from './EditProfile';
 
 export default function ProfileManage({email,profileName,profilePicture,language,maturity,gameHandle}) {

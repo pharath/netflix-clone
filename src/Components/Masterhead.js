@@ -1,5 +1,5 @@
 import React from 'react'
-import './Masterhead.css'
+import './Styles/Masterhead.css'
 
 export default function Masterhead() {
   return (

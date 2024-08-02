@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Plancard.css'
+import './Styles/Plancard.css'
 
 export default function PlanCard({isSelected,onSelect,gradient}) {
   return (

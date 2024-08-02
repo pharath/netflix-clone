@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Signin_component.css'
+import './Styles/Signin_component.css'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';

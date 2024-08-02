@@ -1,5 +1,5 @@
 import React from 'react'
-import './DropDownProfile.css'
+import './Styles/DropDownProfile.css'
 
 export default function DropDownProfile({profilePicture,profileName,setSelectedProfile,closeDropdown,setSelectedProfileName}) {
   return (

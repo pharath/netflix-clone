@@ -1,5 +1,5 @@
 import React from 'react'
-import './Globalfooter.css'
+import './Styles/Globalfooter.css'
 
 export default function Globalfooter() {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './VideoCard.css';
+import './Styles/VideoCard.css';
 import VideoCardInfo from './VideoCardInfo';
-import './VideoThumbnails.css'
+import './Styles/VideoThumbnails.css'
 
 export default function VideoCard({videoTitle,videoCategory,videoRating,releaseYear,thumbnail,email,selectedProfileName}) {
   const [showInfo, setShowInfo] = useState(false);

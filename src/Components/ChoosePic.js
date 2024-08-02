@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './ChoosePic.css'
+import './Styles/ChoosePic.css'
 import ConfirmPic from './ConfirmPic';
 
 export default function ChoosePic({hideChoosePic,profilePicture,setNewProfilePicture}) {

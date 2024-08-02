@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ProfilePicker.css'
+import './Styles/ProfilePicker.css'
 import ProfilePreview from './ProfilePreview'
 import AddProfile from './AddProfile'
 import ManageProfile from './ManageProfile';

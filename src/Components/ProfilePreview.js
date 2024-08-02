@@ -1,5 +1,5 @@
 import React from 'react'
-import './ProfilePreview.css'
+import './Styles/ProfilePreview.css'
 
 export default function ProfilePreview({profileName,profilePicture,hideProfilePick,setSelectedProfile,setSelectedProfileName}) {
   return (

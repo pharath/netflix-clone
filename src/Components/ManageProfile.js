@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ManageProfile.css'
+import './Styles/ManageProfile.css'
 import AddProfile from './AddProfile'
 import ProfileManage from './ProfileManage'
 

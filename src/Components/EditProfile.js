@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './EditProfile.css'
+import './Styles/EditProfile.css'
 import Form from 'react-bootstrap/Form';
 import ChoosePic from './ChoosePic';
 import ConfirmDelete from './ConfirmDelete';

@@ -62,7 +62,7 @@ This project is a Netflix clone application built with a React frontend and a Sp
 1. Open a new terminal window, navigate to the frontend directory:
 
     ```sh
-    cd netflix-clone/frontend
+    cd netflix-clone
     ```
 
 2. Install the dependencies:

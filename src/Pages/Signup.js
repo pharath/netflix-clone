@@ -82,7 +82,7 @@ export default function Signup() {
                     <Form.Control className='password-input add-password' type="email" defaultValue={email}/>
                     {showPassword && <img onClick={visiblePassword} className='passwordToggle passwordToggle2' src='./Assets/show.png'></img>}
                     {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle passwordToggle2' src='./Assets/hide.png'></img>}
-                    <Form.Control autoComplete="new-password" id='userPasswordInput' className='password-input add-password' type={passwordVisible ? 'text' : 'password'} placeholder="Add a password"  style={{ borderColor: borderColor }}/><br></br>
+                    <Form.Control  id='userPasswordInput' className='password-input add-password' type={passwordVisible ? 'text' : 'password'} placeholder="Add a password"  style={{ borderColor: borderColor }}/><br></br>
                 </Form>
                 <div className="check-box-add-password">
                     <Form.Check className='ch-box' aria-label="option 1" />&nbsp; Please do not email me Netflix special offers.

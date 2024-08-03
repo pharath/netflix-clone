@@ -127,11 +127,11 @@ export default function Login() {
                   <img className='error-img' src='/Assets/error.png'></img>
                   <span className='error'>Incorrect password for<br></br>{emailInput}</span>
                 </div>}
-                <Form.Control id='inputEmail' className='email-input-login py-3' type="email" placeholder="Email or mobile number" autoComplete="email"/>
+                <Form.Control id='inputEmail' className='email-input-login py-3' type="email" placeholder="Email or mobile number" />
                 {messageRateText && <p className='message-rate'>Message and data rates may apply</p>}
                 {showPassword && <img onClick={visiblePassword} className='passwordToggle passwordToggle3' src='./Assets/showwhite.png'></img>}
                 {hidePassword && <img onClick={nonVisiblePassword}  className='passwordToggle passwordToggle3' src='./Assets/hidewhite.png'></img>}      
-                {passwordInput && <Form.Control id='inputPassword' className='email-input-login py-3' type={passwordVisible ? 'text' : 'password'} placeholder="Password" autoComplete="current-password"/>} 
+                {passwordInput && <Form.Control id='inputPassword' className='email-input-login py-3' type={passwordVisible ? 'text' : 'password'} placeholder="Password" />} 
                 {signInBtn && <Button onClick={signIn} variant="danger" className='btn-4 signin-btn2 login-btn'>Sign In</Button>}             
                 {signInCodeBtn && <Button variant="danger" className='btn-4 signin-btn2 login-btn'>Send Sign-In Code</Button>}     
                 <p className='signin-text'>OR</p>

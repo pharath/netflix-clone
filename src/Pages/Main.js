@@ -84,7 +84,7 @@ export default function Main() {
           <h4>Ready to watch? Enter your email to create or restart your membership.</h4>
           <div className="form-container">
             <Form className='email-input-container'>
-              <Form.Control id="userEmailInput" autoComplete="email" className='email-input py-3' type="email" placeholder="Email Address"  style={{ borderColor: borderColor }}/>
+              <Form.Control id="userEmailInput" className='email-input py-3' type="email" placeholder="Email Address"  style={{ borderColor: borderColor }}/>
             </Form>
             <Button onClick={getStarted} className='text-light fw-bold btn-1' variant="danger">Get Started&nbsp; <i class="bi bi-chevron-right"></i></Button>
           </div> 

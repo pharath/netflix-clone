@@ -9,7 +9,7 @@ This project is a Netflix clone application built with a React frontend and a Sp
 - [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (version 11 or higher)
 - [Spring Boot](https://spring.io/projects/spring-boot)
 - [XAMPP](https://www.apachefriends.org/index.html) (for MySQL and phpMyAdmin)
-- [Maven](https://maven.apache.org/) 
+- [Maven](https://maven.apache.org/)
 
 ## Getting Started
 
@@ -57,6 +57,16 @@ This project is a Netflix clone application built with a React frontend and a Sp
 
     The backend will be running on `http://localhost:8080`.
 
+5. After running the backend for the first time, the `netflix` database will be created automatically, and the `video_meta_data` table will be set up.
+
+6. To populate the `video_meta_data` table, import the SQL file `SQL/video_meta_data.sql`:
+
+    - Open phpMyAdmin.
+    - Select the `netflix` database.
+    - Navigate to the `Import` tab.
+    - Choose the `SQL/video_meta_data.sql` file from the repository.
+    - Click `Go` to execute the SQL script and populate the table.
+
 ### 3. Setting Up the Frontend
 
 1. Open a new terminal window, navigate to the frontend directory:
@@ -96,26 +106,4 @@ This project is a Netflix clone application built with a React frontend and a Sp
 4. Commit your changes (`git commit -am 'Add new feature'`)
 5. Push to the branch (`git push origin feature-branch`)
 6. Create a new Pull Request
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- Visit `http://localhost:3000` to use the application.
-- Ensure the backend is running at `http://localhost:8080` for the frontend to interact with the backend APIs.
-
-## Project Structure
-
 

@@ -15,11 +15,11 @@ This project is a Netflix clone application built with a React frontend and a Sp
 
 ### 1. Setting Up the Database
 
-1. Download and install [XAMPP](https://www.apachefriends.org/index.html).
-2. Open XAMPP Control Panel and start `Apache` and `MySQL`.
+1. Download and install [XAMPP](https://www.apachefriends.org/index.html). (**phth**: On Ubuntu: Run `sudo /etc/init.d/apache2 stop`, `sudo /opt/lampp/lampp start` to start the database server.)
+2. Open XAMPP Control Panel (**phth**: On Ubuntu: Run `sudo /opt/lampp/./manager-linux-x64.run` to open the XAMPP Control Panel.) and start `Apache` and `MySQL`.
 3. Open phpMyAdmin by visiting `http://localhost/phpmyadmin/` in your browser.
-4. Create a new database named `netflix`.
-5. Import the provided SQL file to set up the initial database structure and data (if available).
+4. ~~Create a new database named `netflix`.~~ (will be created automatically "2. Setting Up the Backend", see 2.5)
+5. ~~Import the provided SQL file to set up the initial database structure and data (if available).~~ (will be done in 2.6)
 
 ### 2. Setting Up the Backend
 

@@ -15,6 +15,10 @@ This project is a Netflix clone application built with a React frontend and a Sp
 
 ### 1. Setting Up the Database
 
+phth: Install XAMPP using `xampp-linux-x64-8.2.12-0-installer.run` on your local machine.
+
+TODO: How to connect to a database in an [XAMPP Docker](https://hub.docker.com/r/tomsik68/xampp/)?
+
 1. Download and install [XAMPP](https://www.apachefriends.org/index.html). (**phth**: On Ubuntu: Run `sudo /etc/init.d/apache2 stop`, `sudo /opt/lampp/lampp start` to start the database server.)
 2. Open XAMPP Control Panel (**phth**: On Ubuntu: Run `sudo /opt/lampp/./manager-linux-x64.run` to open the XAMPP Control Panel.) and start `Apache` and `MySQL`.
 3. Open phpMyAdmin by visiting `http://localhost/phpmyadmin/` in your browser.

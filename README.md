@@ -101,6 +101,9 @@ TODO: How to connect to a database in an [XAMPP Docker](https://hub.docker.com/r
 
 - Visit `http://localhost:3000` to use the application.
 - Ensure the backend is running at `http://localhost:8080` for the frontend to interact with the backend APIs.
+- phth:
+  - when registering for the first time, use eg. [Credit Card Generator](https://www.akto.io/tools/credit-card-generator) to register a credit card
+  - see `screenshots/` to see what credit card data worked last time
 
 ## Contributing
 
